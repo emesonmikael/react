@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import ReactPlayer from 'react-player';
+import { useNavigate } from 'react-router-dom';
 import { saveAs } from 'file-saver';
 
 const M3UPlayer = () => {
   const [channels, setChannels] = useState([]);
-  const [selectedChannel, setSelectedChannel] = useState(null);
+  const navigate = useNavigate(); // Hook para navegação
 
   // Função para processar o conteúdo do arquivo M3U e extrair links e metadados
   const processM3U = (m3uContent) => {
@@ -44,14 +44,15 @@ const M3UPlayer = () => {
 
   // Função para verificar se o URL é de um tipo de mídia suportado pelo ReactPlayer
   const isSupportedMedia = (url) => {
-    const supportedFormats = ['mp4', 'webm', 'ogg', 'm3u8', 'mp3', 'wav', 'flac']; // Adicione outros formatos suportados aqui
+    const supportedFormats = ['mp4', 'webm', 'ogg', 'm3u8', 'mp3', 'wav', 'flac'];
     const fileExtension = url.split('.').pop().toLowerCase();
-    return supportedFormats.includes(fileExtension) || ReactPlayer.canPlay(url);
+    return supportedFormats.includes(fileExtension);
   };
 
   const handleChannelSelect = (channel) => {
     if (isSupportedMedia(channel.url)) {
-      setSelectedChannel(channel);
+      // Navega para a página do player passando o nome do canal na URL
+      navigate(/player/${encodeURIComponent(channel.name)}?url=${encodeURIComponent(channel.url)});
     } else {
       alert('Formato de mídia não suportado. Selecione outro canal.');
     }
@@ -94,13 +95,6 @@ const M3UPlayer = () => {
           </div>
           <button onClick={handleSaveToFile} style={{ marginTop: '20px' }}>Save Channels to File</button>
         </>
-      )}
-
-      {selectedChannel && (
-        <div className="player-wrapper" style={{ marginTop: '20px' }}>
-          <h3>{selectedChannel.name}</h3>
-          <ReactPlayer url={selectedChannel.url} controls width="100%" height="100%" />
-        </div>
       )}
     </div>
   );
