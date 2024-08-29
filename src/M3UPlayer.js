@@ -56,10 +56,11 @@ const M3UPlayer = () => {
 
   const handleChannelSelect = (channel) => {
     if (isSupportedMedia(channel.url)) {
-      setSelectedChannel(channel);
+     setSelectedChannel(channel);
     } else {
       alert('Formato de mídia não suportado. Selecione outro canal.');
     }
+    
     if (isSupportedMedia(channel.url)) {
       // Navega para a página do player passando o nome do canal na URL
       navigate(`player/${encodeURIComponent(channel.name)}?url=${encodeURIComponent(channel.url)}`);
