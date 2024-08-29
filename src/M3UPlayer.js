@@ -42,8 +42,19 @@ const M3UPlayer = () => {
     reader.readAsText(file);
   };
 
+  // Função para verificar se o URL é de um tipo de mídia suportado pelo ReactPlayer
+  const isSupportedMedia = (url) => {
+    const supportedFormats = ['mp4', 'webm', 'ogg', 'm3u8', 'mp3', 'wav', 'flac']; // Adicione outros formatos suportados aqui
+    const fileExtension = url.split('.').pop().toLowerCase();
+    return supportedFormats.includes(fileExtension) || ReactPlayer.canPlay(url);
+  };
+
   const handleChannelSelect = (channel) => {
-    setSelectedChannel(channel);
+    if (isSupportedMedia(channel.url)) {
+      setSelectedChannel(channel);
+    } else {
+      alert('Formato de mídia não suportado. Selecione outro canal.');
+    }
   };
 
   const handleSaveToFile = () => {
