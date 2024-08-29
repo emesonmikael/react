@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import ReactPlayer from 'react-player';
 import { saveAs } from 'file-saver';
+import { useNavigate } from 'react-router-dom';
 
 const M3UPlayer = () => {
   const [channels, setChannels] = useState([]);
+  const [selectedChannel, setSelectedChannel] = useState(null);
   const navigate = useNavigate(); // Hook para navegação
 
   // Função para processar o conteúdo do arquivo M3U e extrair links e metadados
@@ -44,18 +46,27 @@ const M3UPlayer = () => {
 
   // Função para verificar se o URL é de um tipo de mídia suportado pelo ReactPlayer
   const isSupportedMedia = (url) => {
-    const supportedFormats = ['mp4', 'webm', 'ogg', 'm3u8', 'mp3', 'wav', 'flac'];
+    const supportedFormats = ['mp4', 'webm', 'ogg', 'm3u8', 'mp3', 'wav', 'flac']; // Adicione outros formatos suportados aqui
     const fileExtension = url.split('.').pop().toLowerCase();
-    return supportedFormats.includes(fileExtension);
+    return supportedFormats.includes(fileExtension) || ReactPlayer.canPlay(url);
+
+    
   };
+  
 
   const handleChannelSelect = (channel) => {
     if (isSupportedMedia(channel.url)) {
-      // Navega para a página do player passando o nome do canal na URL
-      navigate(/player/${encodeURIComponent(channel.name)}?url=${encodeURIComponent(channel.url)});
+      setSelectedChannel(channel);
     } else {
       alert('Formato de mídia não suportado. Selecione outro canal.');
     }
+    if (isSupportedMedia(channel.url)) {
+      // Navega para a página do player passando o nome do canal na URL
+      navigate(`player/${encodeURIComponent(channel.name)}?url=${encodeURIComponent(channel.url)}`);
+    }else {
+      alert('Formato de mídia não suportado. Selecione outro canal.');
+    }
+
   };
 
   const handleSaveToFile = () => {
@@ -95,6 +106,13 @@ const M3UPlayer = () => {
           </div>
           <button onClick={handleSaveToFile} style={{ marginTop: '20px' }}>Save Channels to File</button>
         </>
+      )}
+
+      {selectedChannel && (
+        <div className="player-wrapper" style={{ marginTop: '20px' }}>
+          <h3>{selectedChannel.name}</h3>
+          <ReactPlayer url={selectedChannel.url} controls width="100%" height="100%" />
+        </div>
       )}
     </div>
   );
