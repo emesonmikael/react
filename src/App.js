@@ -7,6 +7,7 @@ import M3UPlayerHbo from './M3UPlayer copy';
 import M3UPlayerGloboplay from './Globoplay';
 import M3UPlayerAmazonPrime from './ amazon';
 import M3UPlayerDisneyPlus from './DisneyPlus';
+import M3UPlayerParamountPlus from './ParamountPlus';
 
 const App = () => {
   return (
@@ -18,7 +19,7 @@ const App = () => {
         <Route path="/Hbo" element={<M3UPlayerHbo />} />
         <Route path="/DisneyPlus" element={<M3UPlayerDisneyPlus />} />
         <Route path="/AmazonPrime" element={<M3UPlayerAmazonPrime />} />
-        <Route path="/ParamountPlus" element={<M3UPlayerAmazonPrime />} />
+        <Route path="/ParamountPlus" element={<M3UPlayerParamountPlus />} />
 
         <Route path="/netfli/player/:channelName" element={<PlayerPage />} />
         <Route path="/Hbo/player/:channelName" element={<PlayerPage />} />
