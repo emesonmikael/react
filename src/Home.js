@@ -24,7 +24,10 @@ HBO Max
 <a href="https://streamer-liard.vercel.app/Globo">
 Globoplay
 </a>
-
+<p></p>
+<a href="https://streamer-liard.vercel.app/AmazonPrime">
+Amazon Prime
+</a>
  </div>
     
 
