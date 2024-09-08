@@ -18,6 +18,13 @@ function Home(){
 HBO Max
 </a>
 
+<p>
+
+</p>
+<a href="https://streamer-liard.vercel.app/Globoplay">
+Globoplay
+</a>
+
  </div>
     
 
