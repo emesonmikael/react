@@ -10,7 +10,7 @@ const App = () => {
       <Routes>
       <Route path="/" element={<Home />} />
         <Route path="/netfli" element={<M3UPlayer />} />
-        <Route path="netfli/player/:channelName" element={<PlayerPage />} />
+        <Route path="/netfli/player/:channelName" element={<PlayerPage />} />
       </Routes>
     </Router>
   );
