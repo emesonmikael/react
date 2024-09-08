@@ -35,7 +35,7 @@ const M3UPlayerAmazonPrime = () => {
   useEffect(() => {
     const loadM3UFile = async () => {
       try {
-        const response = await fetch('/Globoplaylista.m3u'); // Substitua 'playlist.m3u' pelo nome do seu arquivo
+        const response = await fetch('/AmaonPrimer.m3u'); // Substitua 'playlist.m3u' pelo nome do seu arquivo
         const content = await response.text();
         processM3U(content);
       } catch (error) {
