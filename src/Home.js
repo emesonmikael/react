@@ -11,6 +11,9 @@ function Home(){
  <a href="https://streamer-liard.vercel.app/netfli">
       Netflix Filme e Series 
 </a>
+<a href="https://streamer-liard.vercel.app/Hbo">
+HBO Max
+</a>
 
  </div>
     
