@@ -12,7 +12,7 @@ const App = () => {
       <Routes>
       <Route path="/" element={<Home />} />
         <Route path="/netfli" element={<M3UPlayer />} />
-        <Route path="/Globoplay" element={<M3UPlayerGloboplay />} />
+        <Route path="/Globo" element={<M3UPlayerGloboplay />} />
         <Route path="/Hbo" element={<M3UPlayerHbo />} />
         <Route path="/netfli/player/:channelName" element={<PlayerPage />} />
         <Route path="/Hbo/player/:channelName" element={<PlayerPage />} />

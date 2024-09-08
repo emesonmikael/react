@@ -21,7 +21,7 @@ HBO Max
 <p>
 
 </p>
-<a href="https://streamer-liard.vercel.app/Globoplay">
+<a href="https://streamer-liard.vercel.app/Globo">
 Globoplay
 </a>
 
