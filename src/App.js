@@ -17,13 +17,13 @@ const App = () => {
         <Route path="/Globo" element={<M3UPlayerGloboplay />} />
         <Route path="/Hbo" element={<M3UPlayerHbo />} />
         <Route path="/DisneyPlus" element={<M3UPlayerDisneyPlus />} />
-        
+        <Route path="/AmazonPrime" element={<M3UPlayerAmazonPrime />} />
+
         <Route path="/netfli/player/:channelName" element={<PlayerPage />} />
         <Route path="/Hbo/player/:channelName" element={<PlayerPage />} />
         <Route path="/Globo/player/:channelName" element={<PlayerPage />} />
         <Route path="/DisneyPlus/player/:channelName" element={<PlayerPage />} />
-
-        <Route path="/AmazonPrime/player/:channelName" element={<M3UPlayerAmazonPrime />} />
+        <Route path="/AmazonPrime/player/:channelName" element={<PlayerPage />} />
         <Route path="/AmazonPrime/player/:channelName" element={<M3UPlayerAmazonPrime />} />
         <Route path="/AmazonPrime/player/:channelName" element={<M3UPlayerAmazonPrime />} />
         <Route path="/AmazonPrime/player/:channelName" element={<M3UPlayerAmazonPrime />} />
