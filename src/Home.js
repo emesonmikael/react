@@ -29,12 +29,12 @@ Globoplay
 Amazon Prime
 </a>
 <p></p>
-<a href="https://streamer-liard.vercel.app/AmazonPrime">
-Amazon Prime
+<a href="https://streamer-liard.vercel.app/DisneyPlus">
+Disney Plus
 </a>
 <p></p>
-<a href="https://streamer-liard.vercel.app/AmazonPrime">
-Amazon Prime
+<a href="https://streamer-liard.vercel.app/ParamountPlus">
+Paramount Plus
 </a>
 <p></p>
 <a href="https://streamer-liard.vercel.app/AmazonPrime">
