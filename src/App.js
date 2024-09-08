@@ -20,7 +20,7 @@ const App = () => {
         <Route path="/DisneyPlus" element={<M3UPlayerDisneyPlus />} />
         <Route path="/AmazonPrime" element={<M3UPlayerAmazonPrime />} />
         <Route path="/ParamountPlus" element={<M3UPlayerParamountPlus />} />
-        <Route path="/Max" element={<M3UPlayerParamountPlus />} />
+        <Route path="/Max" element={<M3UPlayerMax />} />
 
         <Route path="/netfli/player/:channelName" element={<PlayerPage />} />
         <Route path="/Hbo/player/:channelName" element={<PlayerPage />} />
@@ -29,10 +29,10 @@ const App = () => {
         <Route path="/AmazonPrime/player/:channelName" element={<PlayerPage />} />
 
         <Route path="/ParamountPlus/player/:channelName" element={<PlayerPage />} />
-        <Route path="/AmazonPrime/player/:channelName" element={<M3UPlayerAmazonPrime />} />
-        <Route path="/AmazonPrime/player/:channelName" element={<M3UPlayerAmazonPrime />} />
-        <Route path="/AmazonPrime/player/:channelName" element={<M3UPlayerAmazonPrime />} />
-        <Route path="/AmazonPrime/player/:channelName" element={<M3UPlayerAmazonPrime />} />
+        <Route path="/Max/player/:channelName" element={<PlayerPage />} />
+        <Route path="/AmazonPrime/player/:channelName" element={<PlayerPage />} />
+        <Route path="/AmazonPrime/player/:channelName" element={<PlayerPage/>} />
+        <Route path="/AmazonPrime/player/:channelName" element={<PlayerPage />} />
         <Route path="/AmazonPrime/player/:channelName" element={<M3UPlayerAmazonPrime />} />
         <Route path="/AmazonPrime/player/:channelName" element={<M3UPlayerAmazonPrime />} />
         <Route path="/AmazonPrime/player/:channelName" element={<M3UPlayerAmazonPrime />} />
