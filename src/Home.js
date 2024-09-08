@@ -9,7 +9,7 @@ function Home(){
         <div>
  <h1> pagina home</h1>
  <a href="https://ominous-umbrella-rq59wx47r7g34w4-3000.app.github.dev/netfli">
-      Ir para o Google
+      Netflix Filme e Series 
 </a>
 
  </div>
