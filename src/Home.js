@@ -8,7 +8,7 @@ function Home(){
     return(
         <div>
  <h1> pagina home</h1>
- <a href="https://ominous-umbrella-rq59wx47r7g34w4-3000.app.github.dev/netfli">
+ <a href="https://localhost:3000/netfli">
       Netflix Filme e Series 
 </a>
 
