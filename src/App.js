@@ -16,6 +16,7 @@ const App = () => {
         <Route path="/Hbo" element={<M3UPlayerHbo />} />
         <Route path="/netfli/player/:channelName" element={<PlayerPage />} />
         <Route path="/Hbo/player/:channelName" element={<PlayerPage />} />
+        <Route path="/Globo/player/:channelName" element={<PlayerPage />} />
       </Routes>
     </Router>
   );
