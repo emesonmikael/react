@@ -10,6 +10,9 @@ function Home(){
  <h1> pagina home</h1>
  <a href="https://streamer-liard.vercel.app/netfli">
       Netflix Filme e Series 
+<p>
+
+</p>
 </a>
 <a href="https://streamer-liard.vercel.app/Hbo">
 HBO Max
