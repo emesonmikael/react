@@ -20,6 +20,7 @@ const App = () => {
         <Route path="/DisneyPlus" element={<M3UPlayerDisneyPlus />} />
         <Route path="/AmazonPrime" element={<M3UPlayerAmazonPrime />} />
         <Route path="/ParamountPlus" element={<M3UPlayerParamountPlus />} />
+        <Route path="/Max" element={<M3UPlayerParamountPlus />} />
 
         <Route path="/netfli/player/:channelName" element={<PlayerPage />} />
         <Route path="/Hbo/player/:channelName" element={<PlayerPage />} />

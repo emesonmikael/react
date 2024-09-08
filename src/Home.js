@@ -37,8 +37,8 @@ Disney Plus
 Paramount Plus
 </a>
 <p></p>
-<a href="https://streamer-liard.vercel.app/AmazonPrime">
-Amazon Prime
+<a href="https://streamer-liard.vercel.app/Max">
+Max
 </a>
 <p></p>
 <a href="https://streamer-liard.vercel.app/AmazonPrime">
