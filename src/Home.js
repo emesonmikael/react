@@ -9,7 +9,7 @@ function Home(){
         <div>
  <h1> pagina home</h1>
  <a href="https://streamer-liard.vercel.app/netfli">
-      Netflix Filme e Series 
+      Netflix Filme  
 <p>
 
 </p>
