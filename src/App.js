@@ -8,6 +8,7 @@ import M3UPlayerGloboplay from './Globoplay';
 import M3UPlayerAmazonPrime from './ amazon';
 import M3UPlayerDisneyPlus from './DisneyPlus';
 import M3UPlayerParamountPlus from './ParamountPlus';
+import M3UPlayerMax from './Max';
 
 const App = () => {
   return (
