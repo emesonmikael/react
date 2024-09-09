@@ -9,6 +9,7 @@ import M3UPlayerAmazonPrime from './ amazon';
 import M3UPlayerDisneyPlus from './DisneyPlus';
 import M3UPlayerParamountPlus from './ParamountPlus';
 import M3UPlayerMax from './Max';
+import M3UPlayerClarovideo from './Clarovideo';
 
 const App = () => {
   return (
@@ -22,7 +23,7 @@ const App = () => {
         <Route path="/AmazonPrime" element={<M3UPlayerAmazonPrime />} />
         <Route path="/ParamountPlus" element={<M3UPlayerParamountPlus />} />
         <Route path="/Max" element={<M3UPlayerMax />} />
-        <Route path="/Clarovideo" element={<M3UPlayerMax />} />
+        <Route path="/Clarovideo" element={<M3UPlayerClarovideo />} />
         <Route path="/Max" element={<M3UPlayerMax />} />
         <Route path="/Max" element={<M3UPlayerMax />} />
         <Route path="/Max" element={<M3UPlayerMax />} />

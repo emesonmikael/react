@@ -3,7 +3,7 @@ import ReactPlayer from 'react-player';
 import { saveAs } from 'file-saver';
 import { useNavigate } from 'react-router-dom';
 
-const M3UPlayerDisneyPlus = () => {
+const M3UPlayerClarovideo = () => {
   const [channels, setChannels] = useState([]);
   const [selectedChannel, setSelectedChannel] = useState(null);
   const navigate = useNavigate();
@@ -113,4 +113,4 @@ const M3UPlayerDisneyPlus = () => {
   );
 };
 
-export default M3UPlayerDisneyPlus;
+export default M3UPlayerClarovideo;
