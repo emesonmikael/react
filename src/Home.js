@@ -45,8 +45,8 @@ Max
 Claro video
 </a>
 <p></p>
-<a href="https://streamer-liard.vercel.app/AmazonPrime">
-Amazon Prime
+<a href="https://streamer-liard.vercel.app/GooglePlayMovies">
+Google Play Movies
 </a>
 <p></p>
 <a href="https://streamer-liard.vercel.app/AmazonPrime">
