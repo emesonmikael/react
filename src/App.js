@@ -16,6 +16,7 @@ import M3UPlayerOldflix from './Oldflix';
 import M3UPlayerNOW from './NOW';
 import M3UPlayerVudu from './Vudu';
 import M3UPlayerAMConDemand from './AMConDemand';
+import M3UPlayerParamountPlusAppleTVChannel from './ParamountPlusAppleTVChannel';
 
 const App = () => {
   return (
@@ -36,7 +37,7 @@ const App = () => {
         <Route path="/NOW" element={<M3UPlayerNOW />} />
         <Route path="/Vudu" element={<M3UPlayerVudu />} />
         <Route path="/AMConDemand" element={<M3UPlayerAMConDemand />} />
-        <Route path="/Max" element={<M3UPlayerMax />} />
+        <Route path="/ParamountPlusAppleTVChannel" element={<M3UPlayerParamountPlusAppleTVChannel />} />
         <Route path="/Max" element={<M3UPlayerMax />} />
         <Route path="/Max" element={<M3UPlayerMax />} />
         <Route path="/Max" element={<M3UPlayerMax />} />
@@ -58,7 +59,7 @@ const App = () => {
         <Route path="/NOW/player/:channelName" element={<PlayerPage  />} />
         <Route path="/Vudu/player/:channelName" element={<PlayerPage />} />
         <Route path="/AMConDemand/player/:channelName" element={<PlayerPage />} />
-        <Route path="/AmazonPrime/player/:channelName" element={<PlayerPage  />} />
+        <Route path="/ParamountPlusAppleTVChannel/player/:channelName" element={<PlayerPage  />} />
         <Route path="/AmazonPrime/player/:channelName" element={<PlayerPage  />} />
         <Route path="/AmazonPrime/player/:channelName" element={<M3UPlayerAmazonPrime />} />
         <Route path="/AmazonPrime/player/:channelName" element={<M3UPlayerAmazonPrime />} />

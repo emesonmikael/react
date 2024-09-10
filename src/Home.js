@@ -69,8 +69,8 @@ Vudu
 AMC on Demand
 </a>
 <p></p>
-<a href="https://streamer-liard.vercel.app/AmazonPrime">
-Amazon Prime
+<a href="https://streamer-liard.vercel.app/ParamountPlusAppleTVChannel">
+Paramount Plus Apple TV Channel
 </a>
 <p></p>
 <a href="https://streamer-liard.vercel.app/AmazonPrime">
