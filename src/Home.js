@@ -77,8 +77,8 @@ Paramount Plus Apple TV Channel
 Univer Video
 </a>
 <p></p>
-<a href="https://streamer-liard.vercel.app/AmazonPrime">
-Amazon Prime
+<a href="https://streamer-liard.vercel.app/NetflixbasicwithAds">
+Netflix basic with Ads
 </a>
 <p></p>
 <a href="https://streamer-liard.vercel.app/AmazonPrime">
