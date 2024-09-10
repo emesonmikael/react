@@ -62,6 +62,7 @@ const App = () => {
         <Route path="/AMConDemand/player/:channelName" element={<PlayerPage />} />
         <Route path="/ParamountPlusAppleTVChannel/player/:channelName" element={<PlayerPage  />} />
         <Route path="/UniverVideo/player/:channelName" element={<PlayerPage  />} />
+        
         <Route path="/AmazonPrime/player/:channelName" element={<M3UPlayerAmazonPrime />} />
         <Route path="/AmazonPrime/player/:channelName" element={<M3UPlayerAmazonPrime />} />
         <Route path="/AmazonPrime/player/:channelName" element={<M3UPlayerAmazonPrime />} />
