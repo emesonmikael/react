@@ -53,8 +53,8 @@ Google Play Movies
 MGMChannel
 </a>
 <p></p>
-<a href="https://streamer-liard.vercel.app/AmazonPrime">
-Amazon Prime
+<a href="https://streamer-liard.vercel.app/Oldflix">
+Oldflix
 </a>
 <p></p>
 <a href="https://streamer-liard.vercel.app/AmazonPrime">

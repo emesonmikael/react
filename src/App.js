@@ -12,6 +12,7 @@ import M3UPlayerMax from './Max';
 import M3UPlayerClarovideo from './Clarovideo';
 import M3UPlayerGooglePlayMovies from './GooglePlayMovies';
 import M3UPlayerMGMChannel from './MGMChannel';
+import M3UPlayerOldflix from './Oldflix';
 
 const App = () => {
   return (
@@ -28,7 +29,7 @@ const App = () => {
         <Route path="/Clarovideo" element={<M3UPlayerClarovideo />} />
         <Route path="/GooglePlayMovies" element={<M3UPlayerGooglePlayMovies />} />
         <Route path="/MGMChannel" element={<M3UPlayerMGMChannel />} />
-        <Route path="/Max" element={<M3UPlayerMax />} />
+        <Route path="/Oldflix" element={<M3UPlayerOldflix />} />
         <Route path="/Max" element={<M3UPlayerMax />} />
         <Route path="/Max" element={<M3UPlayerMax />} />
         <Route path="/Max" element={<M3UPlayerMax />} />
@@ -49,7 +50,8 @@ const App = () => {
         <Route path="/GooglePlayMovies/player/:channelName" element={<PlayerPage/>} />
 
         <Route path="/MGMChannel/player/:channelName" element={<PlayerPage />} />
-        <Route path="/AmazonPrime/player/:channelName" element={<PlayerPage  />} />
+        <Route path="/Oldflix/player/:channelName" element={<PlayerPage  />} />
+
         <Route path="/AmazonPrime/player/:channelName" element={<PlayerPage  />} />
         <Route path="/AmazonPrime/player/:channelName" element={<PlayerPage />} />
         <Route path="/AmazonPrime/player/:channelName" element={<PlayerPage />} />
