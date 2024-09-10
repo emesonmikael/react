@@ -49,8 +49,8 @@ Claro video
 Google Play Movies
 </a>
 <p></p>
-<a href="https://streamer-liard.vercel.app/AmazonPrime">
-Amazon Prime
+<a href="https://streamer-liard.vercel.app/MGMChannel">
+MGMChannel
 </a>
 <p></p>
 <a href="https://streamer-liard.vercel.app/AmazonPrime">
