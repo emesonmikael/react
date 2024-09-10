@@ -35,7 +35,7 @@ const M3UPlayerOldflix = () => {
   useEffect(() => {
     const loadM3UFile = async () => {
       try {
-        const response = await fetch('/373.m3u'); // Substitua 'playlist.m3u' pelo nome do seu arquivo
+        const response = await fetch('/373.m3u8'); // Substitua 'playlist.m3u' pelo nome do seu arquivo
         const content = await response.text();
         processM3U(content);
       } catch (error) {
