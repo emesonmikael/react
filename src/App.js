@@ -13,6 +13,8 @@ import M3UPlayerClarovideo from './Clarovideo';
 import M3UPlayerGooglePlayMovies from './GooglePlayMovies';
 import M3UPlayerMGMChannel from './MGMChannel';
 import M3UPlayerOldflix from './Oldflix';
+import M3UPlayerNOW from './NOW';
+import M3UPlayerVudu from './Vudu';
 
 const App = () => {
   return (
@@ -30,8 +32,8 @@ const App = () => {
         <Route path="/GooglePlayMovies" element={<M3UPlayerGooglePlayMovies />} />
         <Route path="/MGMChannel" element={<M3UPlayerMGMChannel />} />
         <Route path="/Oldflix" element={<M3UPlayerOldflix />} />
-        <Route path="/Max" element={<M3UPlayerMax />} />
-        <Route path="/Max" element={<M3UPlayerMax />} />
+        <Route path="/NOW" element={<M3UPlayerNOW />} />
+        <Route path="/Vudu" element={<M3UPlayerVudu />} />
         <Route path="/Max" element={<M3UPlayerMax />} />
         <Route path="/Max" element={<M3UPlayerMax />} />
         <Route path="/Max" element={<M3UPlayerMax />} />
@@ -52,8 +54,8 @@ const App = () => {
         <Route path="/MGMChannel/player/:channelName" element={<PlayerPage />} />
         <Route path="/Oldflix/player/:channelName" element={<PlayerPage  />} />
 
-        <Route path="/AmazonPrime/player/:channelName" element={<PlayerPage  />} />
-        <Route path="/AmazonPrime/player/:channelName" element={<PlayerPage />} />
+        <Route path="/NOW/player/:channelName" element={<PlayerPage  />} />
+        <Route path="/Vudu/player/:channelName" element={<PlayerPage />} />
         <Route path="/AmazonPrime/player/:channelName" element={<PlayerPage />} />
         <Route path="/AmazonPrime/player/:channelName" element={<PlayerPage  />} />
         <Route path="/AmazonPrime/player/:channelName" element={<PlayerPage  />} />

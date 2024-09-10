@@ -57,12 +57,12 @@ MGMChannel
 Oldflix
 </a>
 <p></p>
-<a href="https://streamer-liard.vercel.app/AmazonPrime">
-Amazon Prime
+<a href="https://streamer-liard.vercel.app/NOW">
+NOW
 </a>
 <p></p>
-<a href="https://streamer-liard.vercel.app/AmazonPrime">
-Amazon Prime
+<a href="https://streamer-liard.vercel.app/Vudu">
+Vudu
 </a>
 <p></p>
 <a href="https://streamer-liard.vercel.app/AmazonPrime">
