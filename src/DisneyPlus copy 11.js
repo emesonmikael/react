@@ -3,7 +3,7 @@ import ReactPlayer from 'react-player';
 import { saveAs } from 'file-saver';
 import { useNavigate } from 'react-router-dom';
 
-const M3UPlayerDisneyPlus = () => {
+const M3UPlayerUniverVideo = () => {
   const [channels, setChannels] = useState([]);
   const [selectedChannel, setSelectedChannel] = useState(null);
   const navigate = useNavigate();
@@ -35,7 +35,7 @@ const M3UPlayerDisneyPlus = () => {
   useEffect(() => {
     const loadM3UFile = async () => {
       try {
-        const response = await fetch('/DisneyPlus.m3u'); // Substitua 'playlist.m3u' pelo nome do seu arquivo
+        const response = await fetch('/UniverVideo.m3u'); // Substitua 'playlist.m3u' pelo nome do seu arquivo
         const content = await response.text();
         processM3U(content);
       } catch (error) {
@@ -48,7 +48,7 @@ const M3UPlayerDisneyPlus = () => {
 
   // Função para verificar se o URL é de um tipo de mídia suportado pelo ReactPlayer
   const isSupportedMedia = (url) => {
-    const supportedFormats = ['mp4', 'webm', 'ogg', 'm3u8', 'mp3', 'wav', 'flac'];
+    const supportedFormats = ['mp4', 'webm', 'ogg', 'm3u8', 'mp3', 'wav', 'flac','hls'];
     const fileExtension = url.split('.').pop().toLowerCase();
     return supportedFormats.includes(fileExtension) || ReactPlayer.canPlay(url);
   };
@@ -113,4 +113,4 @@ const M3UPlayerDisneyPlus = () => {
   );
 };
 
-export default M3UPlayerDisneyPlus;
+export default M3UPlayerUniverVideo;

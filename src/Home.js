@@ -73,8 +73,8 @@ AMC on Demand
 Paramount Plus Apple TV Channel
 </a>
 <p></p>
-<a href="https://streamer-liard.vercel.app/AmazonPrime">
-Amazon Prime
+<a href="https://streamer-liard.vercel.app/UniverVideo">
+Univer Video
 </a>
 <p></p>
 <a href="https://streamer-liard.vercel.app/AmazonPrime">
