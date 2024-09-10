@@ -93,8 +93,8 @@ Looke
 Filmicca
 </a>
 <p></p>
-<a href="https://streamer-liard.vercel.app/AmazonPrime">
-Amazon Prime
+<a href="https://streamer-liard.vercel.app/Lancamentos2024">
+Lancamentos 2024
 </a>
 <p></p>
 <a href="https://streamer-liard.vercel.app/AmazonPrime">
