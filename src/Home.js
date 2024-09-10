@@ -85,8 +85,8 @@ Netflix basic with Ads
 Oi Play
 </a>
 <p></p>
-<a href="https://streamer-liard.vercel.app/AmazonPrime">
-Amazon Prime
+<a href="https://streamer-liard.vercel.app/Looke">
+Looke
 </a>
 <p></p>
 <a href="https://streamer-liard.vercel.app/AmazonPrime">
