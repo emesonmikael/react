@@ -81,8 +81,8 @@ Univer Video
 Netflix basic with Ads
 </a>
 <p></p>
-<a href="https://streamer-liard.vercel.app/AmazonPrime">
-Amazon Prime
+<a href="https://streamer-liard.vercel.app/OiPlay">
+Oi Play
 </a>
 <p></p>
 <a href="https://streamer-liard.vercel.app/AmazonPrime">

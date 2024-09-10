@@ -19,6 +19,7 @@ import M3UPlayerAMConDemand from './AMConDemand';
 import M3UPlayerParamountPlusAppleTVChannel from './ParamountPlusAppleTVChannel';
 import M3UPlayerUniverVideo from './UniverVideo';
 import M3UPlayerNetflixbasicwithAds from './NetflixbasicwithAds';
+import M3UPlayerOiPlay from './OiPlay';
 
 const App = () => {
   return (
@@ -42,7 +43,7 @@ const App = () => {
         <Route path="/ParamountPlusAppleTVChannel" element={<M3UPlayerParamountPlusAppleTVChannel />} />
         <Route path="/UniverVideo" element={<M3UPlayerUniverVideo />} />
         <Route path="/NetflixbasicwithAds" element={<M3UPlayerNetflixbasicwithAds />} />
-        <Route path="/Max" element={<M3UPlayerMax />} />
+        <Route path="/Oi Play" element={<M3UPlayerOiPlay />} />
         <Route path="/Max" element={<M3UPlayerMax />} />
         <Route path="/Max" element={<M3UPlayerMax />} />
         <Route path="/Max" element={<M3UPlayerMax />} />
@@ -72,8 +73,8 @@ const App = () => {
         <Route path="/ParamountPlusAppleTVChannel/player/:channelName" element={<PlayerPage  />} />
         <Route path="/UniverVideo/player/:channelName" element={<PlayerPage  />} />
         
-        <Route path="/PlayerPage/player/:channelName" element={<PlayerPage/>} />
-        <Route path="/AmazonPrime/player/:channelName" element={<PlayerPage />} />
+        <Route path="/NetflixbasicwithAds/player/:channelName" element={<PlayerPage/>} />
+        <Route path="/OiPlay/player/:channelName" element={<PlayerPage />} />
         <Route path="/AmazonPrime/player/:channelName" element={<PlayerPage />} />
         <Route path="/AmazonPrime/player/:channelName" element={<PlayerPage />} />
         <Route path="/AmazonPrime/player/:channelName" element={<PlayerPage />} />
