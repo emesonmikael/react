@@ -21,6 +21,7 @@ import M3UPlayerUniverVideo from './UniverVideo';
 import M3UPlayerNetflixbasicwithAds from './NetflixbasicwithAds';
 import M3UPlayerOiPlay from './OiPlay';
 import M3UPlayerLooke from './Looke';
+import M3UPlayerFilmicca from './Filmicca';
 
 const App = () => {
   return (
@@ -46,7 +47,7 @@ const App = () => {
         <Route path="/NetflixbasicwithAds" element={<M3UPlayerNetflixbasicwithAds />} />
         <Route path="/OiPlay" element={<M3UPlayerOiPlay />} />
         <Route path="/Looke" element={<M3UPlayerLooke />} />
-        <Route path="/Max" element={<M3UPlayerMax />} />
+        <Route path="/Filmicca" element={<M3UPlayerFilmicca />} />
         <Route path="/Max" element={<M3UPlayerMax />} />
         <Route path="/Max" element={<M3UPlayerMax />} />
         <Route path="/Max" element={<M3UPlayerMax />} />
@@ -77,7 +78,7 @@ const App = () => {
         <Route path="/NetflixbasicwithAds/player/:channelName" element={<PlayerPage/>} />
         <Route path="/OiPlay/player/:channelName" element={<PlayerPage />} />
         <Route path="/Looke/player/:channelName" element={<PlayerPage />} />
-        <Route path="/AmazonPrime/player/:channelName" element={<PlayerPage />} />
+        <Route path="/Filmicca/player/:channelName" element={<PlayerPage />} />
         <Route path="/AmazonPrime/player/:channelName" element={<PlayerPage />} />
         <Route path="/AmazonPrime/player/:channelName" element={<M3UPlayerAmazonPrime />} />
         <Route path="/AmazonPrime/player/:channelName" element={<M3UPlayerAmazonPrime />} />
