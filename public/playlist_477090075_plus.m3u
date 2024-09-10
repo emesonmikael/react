@@ -1,5 +1,5 @@
 #EXTM3U
-#EXT-X-SESSION-DATA:DATA-ID="com.xui.1_5_12r2"
+
 #EXTINF:-1 xui-id="433102" tvg-id="" tvg-name="GLOBO FORTALEZA HDR" tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR34K7AvGqBvPTMuuS_htGBl0Zzhbp_LBWM-1soLEz1trUO60xQJQv2Qxf0&s=10" group-title="CANAIS   GLOBO",GLOBO FORTALEZA HDR
 http://51.15.183.107:80/play/gtOdrjHR6jvR3MSZY4SA9alYW0SS3djiU9MKlvCkxTE.m3u8
 #EXTINF:-1 xui-id="433101" tvg-id="" tvg-name="GLOBO FORTALEZA 4K" tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR34K7AvGqBvPTMuuS_htGBl0Zzhbp_LBWM-1soLEz1trUO60xQJQv2Qxf0&s=10" group-title="CANAIS   GLOBO",GLOBO FORTALEZA 4K
