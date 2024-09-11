@@ -97,8 +97,8 @@ const M3UPlayerOiPlay = () => {
           <video
             src={selectedChannel.url}
             controls
-            width="100%"
-            height="100%"
+            width="50%"
+            height="50%"
             onError={() => alert('Erro ao carregar o vídeo. Tente abrir em outro navegador.')}
           />
         </div>
