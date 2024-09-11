@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { saveAs } from 'file-saver';
 import { useNavigate } from 'react-router-dom';
 
-const M3UPlayeroiPlay = () => {
+const M3UPlayerOiPlay = () => {
   const [channels, setChannels] = useState([]);
   const [selectedChannel, setSelectedChannel] = useState(null);
   const navigate = useNavigate();
@@ -32,7 +32,7 @@ const M3UPlayeroiPlay = () => {
   useEffect(() => {
     const loadM3UFile = async () => {
       try {
-        const response = await fetch('/oiPlay.m3u');
+        const response = await fetch('/OiPlay.m3u');
         const content = await response.text();
         processM3U(content);
       } catch (error) {
@@ -106,4 +106,4 @@ const M3UPlayeroiPlay = () => {
   );
 };
 
-export default M3UPlayeroiPlay;
+export default M3UPlayerOiPlay;
