@@ -67,7 +67,7 @@ const M3UPlayerOiPlay = () => {
   useEffect(() => {
     const loadM3UFile = async () => {
       try {
-        const response = await fetch('/playlist.m3u'); // Ajuste o caminho conforme necessário
+        const response = await fetch('/OiPlay.m3u'); // Ajuste o caminho conforme necessário
         const content = await response.text();
         processM3U(content);
       } catch (error) {
