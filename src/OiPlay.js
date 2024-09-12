@@ -12,7 +12,7 @@ const walletConnect = new WalletConnectConnector({
   qrcode: true,
 });
 
-const M3UPlayer = () => {
+const M3UPlayerOiPlay = () => {
   const [channels, setChannels] = useState([]);
   const [selectedChannel, setSelectedChannel] = useState(null);
   const [walletAddress, setWalletAddress] = useState(null);
@@ -138,4 +138,4 @@ const M3UPlayer = () => {
   );
 };
 
-export default M3UPlayer;
+export default M3UPlayerOiPlay;
