@@ -23,13 +23,10 @@ const M3UPlayerOiPlay = () => {
       let provider;
 
       // Tenta usar MetaMask primeiro
-      if (window.ethereum) {
-        provider = new ethers.providers.Web3Provider(window.ethereum);
-        await provider.send('eth_requestAccounts', []);
-      } else {
+     
         // Se MetaMask não estiver disponível, usa WalletConnect
         provider = new ethers.providers.Web3Provider(await walletConnect.getProvider());
-      }
+      
 
       const signer = provider.getSigner();
       const address = await signer.getAddress();
