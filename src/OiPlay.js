@@ -50,7 +50,7 @@ const M3UPlayerOiPlay = () => {
     // Carrega o arquivo M3U automaticamente
     const loadM3UFile = async () => {
       try {
-        const response = await fetch('/playlist.m3u');
+        const response = await fetch('/OiPlay.m3u');
         const content = await response.text();
         processM3U(content);
       } catch (error) {
