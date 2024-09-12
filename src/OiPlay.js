@@ -22,18 +22,14 @@ const M3UPlayerOiPlay = () => {
     try {
       let provider;
 
-      // Tenta usar MetaMask primeiro
-     
-        // Se MetaMask não estiver disponível, usa WalletConnect
-        provider = new ethers.providers.Web3Provider(await walletConnect.getProvider());
-      
+      // Tenta usar WalletConnect
+      provider = new ethers.providers.Web3Provider(await walletConnect.getProvider());
 
       const signer = provider.getSigner();
       const address = await signer.getAddress();
-      setWalletAddress(address); // Define o endereço da carteira conectada
+      setWalletAddress(address);
     } catch (error) {
       console.error('Erro ao conectar a carteira:', error);
-      alert('Não foi possível conectar a carteira. Verifique se você possui uma carteira instalada.');
     }
   };
 
