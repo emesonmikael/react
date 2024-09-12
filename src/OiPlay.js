@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { saveAs } from 'file-saver';
 import { useNavigate } from 'react-router-dom';
 import { ethers } from 'ethers';
+import { WalletConnectConnector } from '@web3-react/walletconnect-connector';
 
 const M3UPlayerOiPlay = () => {
   const [channels, setChannels] = useState([]);
@@ -9,19 +10,28 @@ const M3UPlayerOiPlay = () => {
   const [walletAddress, setWalletAddress] = useState(null);
 
   // Função para conectar a carteira
+  const walletConnect = new WalletConnectConnector({
+    rpc: { 1: 'https://mainnet.infura.io/v3/94ccd8f7f0ee41678d5a0590e5692762' }, // Use seu ID do projeto Infura
+    bridge: 'https://bridge.walletconnect.org',
+    qrcode: true,
+  });
+  
   const connectWallet = async () => {
-    if (window.ethereum) {
-      try {
-        const provider = new ethers.providers.Web3Provider(window.ethereum);
+    try {
+      let provider;
+      if (window.ethereum) {
+        provider = new ethers.providers.Web3Provider(window.ethereum);
         await provider.send("eth_requestAccounts", []);
-        const signer = provider.getSigner();
-        const address = await signer.getAddress();
-        setWalletAddress(address);
-      } catch (error) {
-        console.error("Erro ao conectar a carteira:", error);
+      } else {
+        provider = new ethers.providers.Web3Provider(await walletConnect.getProvider());
       }
-    } else {
-      alert("MetaMask não está instalada. Por favor, instale-a para continuar.");
+  
+      const signer = provider.getSigner();
+      const address = await signer.getAddress();
+      setWalletAddress(address);
+    } catch (error) {
+      console.error("Erro ao conectar a carteira:", error);
+      alert("Não foi possível conectar a carteira. Verifique se você possui uma carteira instalada.");
     }
   };
 
