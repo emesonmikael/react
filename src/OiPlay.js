@@ -7,7 +7,7 @@ const YOUR_INFURA_PROJECT_ID = '94ccd8f7f0ee41678d5a0590e5692762';
 
 // Configuração do WalletConnect
 const walletConnect = new WalletConnectConnector({
-  rpc: { 1:' https://mainnet.infura.io/v3/94ccd8f7f0ee41678d5a0590e5692762'},
+  rpc: { 1:' https://bsc-mainnet.infura.io/v3/94ccd8f7f0ee41678d5a0590e5692762'},
   bridge: 'https://bridge.walletconnect.org',
   qrcode: true,
 });
