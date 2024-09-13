@@ -12,7 +12,7 @@ const App = () => {
   const connectWallet = async () => {
     // Inicializando o WalletConnect Client
     const wcConnector = new WalletConnect({
-      bridge: 'https://bridge.walletconnect.org',
+      bridge: 'https://walletconnect.com',
     });
 
     // Verifica se já existe uma conexão ativa
