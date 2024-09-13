@@ -1,39 +1,46 @@
+
 import React, { useState, useEffect } from 'react';
 import { ethers } from 'ethers';
 import { WalletConnectConnector } from '@web3-react/walletconnect-connector';
 
-// Substitua pelo seu Infura Project ID
-const YOUR_INFURA_PROJECT_ID = '94ccd8f7f0ee41678d5a0590e5692762';
+const YOUR_INFURA_PROJECT_ID = '
+4f2cf2bc50c8496bb379695691632d3d'; // Coloque o seu Project ID aqui
 
-// Configuração do WalletConnect
+// Configurando WalletConnect com o Infura
 const walletConnect = new WalletConnectConnector({
-  rpc: { 1: 'https://bsc-mainnet.infura.io/v3/4f2cf2bc50c8496bb379695691632d3d'},
+  rpc: { 1: `https://mainnet.infura.io/v3/${YOUR_INFURA_PROJECT_ID}` }, // URL da rede Ethereum Mainnet com seu Project ID
   bridge: 'https://bridge.walletconnect.org',
-  qrcode: true,
+  qrcode: true, // Gera QR Code para conexão com carteiras móveis
 });
 
-const M3UPlayerOiPlay = () => {
+const M3UPlayer = () => {
   const [channels, setChannels] = useState([]);
   const [selectedChannel, setSelectedChannel] = useState(null);
   const [walletAddress, setWalletAddress] = useState(null);
 
-  // Função para conectar à carteira usando MetaMask ou WalletConnect
+  // Função para conectar a carteira usando MetaMask ou WalletConnect
   const connectWallet = async () => {
     try {
       let provider;
 
-      // Tenta usar WalletConnect
-      provider = new ethers.providers.Web3Provider(await walletConnect.getProvider());
+      // Tenta usar MetaMask primeiro
+      if (window.ethereum) {
+        provider = new ethers.providers.Web3Provider(window.ethereum);
+        await provider.send("eth_requestAccounts", []); // Solicita ao usuário que conecte a carteira
+      } else {
+        // Se não houver MetaMask, tenta conectar com WalletConnect
+        provider = new ethers.providers.Web3Provider(await walletConnect.getProvider());
+      }
 
       const signer = provider.getSigner();
       const address = await signer.getAddress();
-      setWalletAddress(address);
+      setWalletAddress(address); // Define o endereço da carteira conectada
     } catch (error) {
-      console.error('Erro ao conectar a carteira:', error);
+      console.error("Erro ao conectar a carteira:", error);
+      alert("Não foi possível conectar a carteira. Verifique se você possui uma carteira instalada.");
     }
   };
 
-  // Função para processar o arquivo M3U
   const processM3U = (m3uContent) => {
     const lines = m3uContent.split('\n');
     const parsedChannels = [];
@@ -56,11 +63,11 @@ const M3UPlayerOiPlay = () => {
     setChannels(parsedChannels);
   };
 
-  // Carrega o arquivo M3U automaticamente ao montar o componente
   useEffect(() => {
+    // Carrega o arquivo M3U automaticamente do projeto
     const loadM3UFile = async () => {
       try {
-        const response = await fetch('/OiPlay.m3u'); // Ajuste o caminho conforme necessário
+        const response = await fetch('/playlist.m3u'); // Altere o caminho conforme necessário
         const content = await response.text();
         processM3U(content);
       } catch (error) {
@@ -71,7 +78,6 @@ const M3UPlayerOiPlay = () => {
     loadM3UFile();
   }, []);
 
-  // Função para selecionar um canal
   const handleChannelSelect = (channel) => {
     setSelectedChannel(channel);
     window.open(channel.url, '_blank'); // Abre o vídeo em uma nova aba do navegador padrão
@@ -88,7 +94,7 @@ const M3UPlayerOiPlay = () => {
           {channels.length > 0 && (
             <>
               <div>
-                <h3>Selecione um Canal:</h3>
+                <h3>Select a Channel:</h3>
                 <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
                   {channels.map((channel, index) => (
                     <div
@@ -131,4 +137,4 @@ const M3UPlayerOiPlay = () => {
   );
 };
 
-export default M3UPlayerOiPlay;
+export default M3UPlayer;
