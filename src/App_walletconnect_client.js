@@ -1,6 +1,7 @@
-
+// src/App.js
 import React, { useState } from 'react';
-import WalletConnectClient from '@walletconnect/client';
+import WalletConnect from '@walletconnect/client';
+import QRCodeModal from '@walletconnect/qrcode-modal';
 import { ethers } from 'ethers';
 
 const App = () => {
@@ -10,35 +11,36 @@ const App = () => {
   // Função para conectar ao WalletConnect
   const connectWallet = async () => {
     // Inicializando o WalletConnect Client
-    const wcConnector = new WalletConnectClient({
+    const wcConnector = new WalletConnect({
       bridge: 'https://bridge.walletconnect.org',
     });
 
-    // Verificando se o WalletConnect já está conectado
+    // Verifica se já existe uma conexão ativa
     if (!wcConnector.connected) {
-      // Criando uma nova sessão (conexão)
+      // Exibe o QR Code para a carteira escanear
       await wcConnector.createSession();
+      QRCodeModal.open(wcConnector.uri, () => {
+        console.log('QR Code Modal fechado');
+      });
     }
 
     // Listener para quando a conexão for estabelecida
-    wcConnector.on('connect', (error, payload) => {
+    wcConnector.on('connect', async (error, payload) => {
       if (error) {
         throw error;
       }
 
-      // Pegando as contas conectadas
+      // Fecha o modal QR code após conexão
+      QRCodeModal.close();
+
+      // Pegando a conta conectada
       const { accounts } = payload.params[0];
       setAccount(accounts[0]);
-    });
 
-    // Listener para desconectar
-    wcConnector.on('disconnect', (error) => {
-      if (error) {
-        throw error;
-      }
-
-      setAccount(null);
-      setConnector(null);
+      // Conectando ao ethers.js com o provider WalletConnect
+      const provider = new ethers.providers.Web3Provider(wcConnector);
+      const signer = provider.getSigner();
+      console.log('Signer:', await signer.getAddress());
     });
 
     setConnector(wcConnector);

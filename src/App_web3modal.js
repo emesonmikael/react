@@ -1,4 +1,4 @@
-
+// src/App.js
 import React, { useState } from 'react';
 import Web3Modal from 'web3modal';
 import WalletConnectProvider from '@walletconnect/web3-provider';
@@ -8,32 +8,35 @@ const App = () => {
   const [provider, setProvider] = useState(null);
   const [account, setAccount] = useState(null);
 
-  // Função para conectar usando o Web3Modal
   const connectWallet = async () => {
-    // Configuração do Web3Modal com o provedor WalletConnect
-    const web3Modal = new Web3Modal({
-      cacheProvider: false, // opcional
-      providerOptions: {
-        walletconnect: {
-          package: WalletConnectProvider, // Importação do provider
-          options: {
-            infuraId: 'YOUR_INFURA_ID', // Coloque seu Infura ID ou outro RPC aqui
+    try {
+      // Configurando o Web3Modal
+      const web3Modal = new Web3Modal({
+        cacheProvider: false,
+        providerOptions: {
+          walletconnect: {
+            package: WalletConnectProvider,
+            options: {
+              infuraId: '4f2cf2bc50c8496bb379695691632d3d', // Coloque um Infura ID válido
+            },
           },
         },
-      },
-    });
+      });
 
-    // Abre o modal para selecionar a carteira
-    const instance = await web3Modal.connect();
+      // Mostra o modal para selecionar a carteira
+      const instance = await web3Modal.connect();
 
-    // Conecta o ethers.js ao provedor selecionado
-    const web3Provider = new ethers.providers.Web3Provider(instance);
-    setProvider(web3Provider);
+      // Conectando ao ethers.js
+      const web3Provider = new ethers.providers.Web3Provider(instance);
+      setProvider(web3Provider);
 
-    // Pega as contas conectadas
-    const signer = web3Provider.getSigner();
-    const account = await signer.getAddress();
-    setAccount(account);
+      // Pegando a conta conectada
+      const signer = web3Provider.getSigner();
+      const address = await signer.getAddress();
+      setAccount(address);
+    } catch (err) {
+      console.error('Erro ao conectar:', err);
+    }
   };
 
   return (
