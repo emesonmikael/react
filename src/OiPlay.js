@@ -3,8 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { ethers } from 'ethers';
 import { WalletConnectConnector } from '@web3-react/walletconnect-connector';
 
-const YOUR_INFURA_PROJECT_ID = '
-4f2cf2bc50c8496bb379695691632d3d'; // Coloque o seu Project ID aqui
+const YOUR_INFURA_PROJECT_ID = '4f2cf2bc50c8496bb379695691632d3d'; // Coloque o seu Project ID aqui
 
 // Configurando WalletConnect com o Infura
 const walletConnect = new WalletConnectConnector({
