@@ -12,7 +12,7 @@ const walletConnect = new WalletConnectConnector({
   qrcode: true, // Gera QR Code para conexão com carteiras móveis
 });
 
-const M3UPlayer = () => {
+const M3UPlayerOiPlay = () => {
   const [channels, setChannels] = useState([]);
   const [selectedChannel, setSelectedChannel] = useState(null);
   const [walletAddress, setWalletAddress] = useState(null);
@@ -66,7 +66,7 @@ const M3UPlayer = () => {
     // Carrega o arquivo M3U automaticamente do projeto
     const loadM3UFile = async () => {
       try {
-        const response = await fetch('/playlist.m3u'); // Altere o caminho conforme necessário
+        const response = await fetch('/OiPlay.m3u'); // Altere o caminho conforme necessário
         const content = await response.text();
         processM3U(content);
       } catch (error) {
@@ -136,4 +136,4 @@ const M3UPlayer = () => {
   );
 };
 
-export default M3UPlayer;
+export default M3UPlayerOiPlay;
