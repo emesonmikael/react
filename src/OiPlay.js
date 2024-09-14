@@ -5,12 +5,7 @@ import { WalletConnectConnector } from '@web3-react/walletconnect-connector';
 
 const YOUR_INFURA_PROJECT_ID = '4f2cf2bc50c8496bb379695691632d3d'; // Coloque o seu Project ID aqui
 
-// Configurando WalletConnect com o Infura
-const walletConnect = new WalletConnectConnector({
-  rpc: { 1: `https://mainnet.infura.io/v3/${YOUR_INFURA_PROJECT_ID}` }, // URL da rede Ethereum Mainnet com seu Project ID
-  bridge: 'https://bridge.walletconnect.org',
-  qrcode: true, // Gera QR Code para conexão com carteiras móveis
-});
+
 
 const M3UPlayerOiPlay = () => {
   const [channels, setChannels] = useState([]);
@@ -21,6 +16,12 @@ const M3UPlayerOiPlay = () => {
   const connectWallet = async () => {
     try {
       let provider;
+      // Configurando WalletConnect com o Infura
+const walletConnect = new WalletConnectConnector({
+  rpc: { 1: `https://mainnet.infura.io/v3/${YOUR_INFURA_PROJECT_ID}` }, // URL da rede Ethereum Mainnet com seu Project ID
+  bridge: 'https://bridge.walletconnect.org',
+  qrcode: true, // Gera QR Code para conexão com carteiras móveis
+});
 
       // Tenta usar MetaMask primeiro
       if (window.ethereum) {
@@ -28,14 +29,9 @@ const M3UPlayerOiPlay = () => {
         await provider.send("eth_requestAccounts", []); // Solicita ao usuário que conecte a carteira
       } else {
         // Se não houver MetaMask, tenta conectar com WalletConnect
-        const YOUR_INFURA_PROJECT_ID = '4f2cf2bc50c8496bb379695691632d3d'; // Coloque o seu Project ID aqui
+        //const YOUR_INFURA_PROJECT_ID = '4f2cf2bc50c8496bb379695691632d3d'; // Coloque o seu Project ID aqui
 
-// Configurando WalletConnect com o Infura
-const walletConnect = new WalletConnectConnector({
-  rpc: { 1: `https://mainnet.infura.io/v3/${YOUR_INFURA_PROJECT_ID}` }, // URL da rede Ethereum Mainnet com seu Project ID
-  bridge: 'https://bridge.walletconnect.org',
-  qrcode: true, // Gera QR Code para conexão com carteiras móveis
-});
+
         provider = new ethers.providers.Web3Provider(await walletConnect.getProvider());
       }
 
