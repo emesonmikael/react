@@ -33,9 +33,9 @@
     "xlsx": "^0.18.5"
   },
   "scripts": {
-    "start": "concurrently \"npm run server\" \"npm run workspaces/react  \"",
+    "start": "concurrently \"npm run server\" \"npm run   \"",
     "server": "cd backend && node server.js",
-    "workspaces/react": "cd workspaces/react  && npm start",
+    "react": "cd react  && npm start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
