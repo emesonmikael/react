@@ -11,7 +11,7 @@ const App = () => {
 
   // Função para carregar o arquivo Excel
   const loadSpreadsheet = async () => {
-    const response = await fetch('/your-file.xlsx'); // Substitua com o caminho do arquivo salvo na pasta public
+    const response = await fetch('/dados.xlsx'); // Substitua com o caminho do arquivo salvo na pasta public
     const arrayBuffer = await response.arrayBuffer();
     const workbook = XLSX.read(arrayBuffer, { type: 'array' });
 
@@ -38,7 +38,7 @@ const App = () => {
 
     // Criar um formData para enviar o arquivo
     const formData = new FormData();
-    formData.append('file', blob, 'your-file.xlsx');
+    formData.append('file', blob, 'dados.xlsx');
 
     try {
       // Envia o arquivo para o backend
