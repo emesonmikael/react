@@ -1,8 +1,7 @@
-// src/App.js
 import React, { useState } from 'react';
 import Web3Modal from 'web3modal';
-import WalletConnectProvider from '@walletconnect/web3-provider';
 import { ethers } from 'ethers';
+import WalletConnectProvider from '@walletconnect/web3-provider';
 
 const App = () => {
   const [provider, setProvider] = useState(null);
@@ -10,27 +9,25 @@ const App = () => {
 
   const connectWallet = async () => {
     try {
-      // Configurando o Web3Modal
+      // Configuração para o Web3Modal com suporte ao WalletConnect 2.0
       const web3Modal = new Web3Modal({
-        cacheProvider: false,
+        cacheProvider: false, // optional
         providerOptions: {
           walletconnect: {
             package: WalletConnectProvider,
             options: {
-              infuraId: '4f2cf2bc50c8496bb379695691632d3d', // Coloque um Infura ID válido
+              rpc: {
+                1: "https://mainnet.infura.io/v3/94ccd8f7f0ee41678d5a0590e5692762", // Alterar para seu Infura ID
+              },
             },
           },
         },
       });
 
-      // Mostra o modal para selecionar a carteira
       const instance = await web3Modal.connect();
-
-      // Conectando ao ethers.js
       const web3Provider = new ethers.providers.Web3Provider(instance);
       setProvider(web3Provider);
 
-      // Pegando a conta conectada
       const signer = web3Provider.getSigner();
       const address = await signer.getAddress();
       setAccount(address);
@@ -41,7 +38,7 @@ const App = () => {
 
   return (
     <div>
-      <h1>WalletConnect com Web3Modal</h1>
+      <h1>WalletConnect 2.0 com Web3Modal</h1>
       {account ? (
         <p>Conectado: {account}</p>
       ) : (
