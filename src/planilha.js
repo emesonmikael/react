@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import * as XLSX from 'xlsx';
+import axios from 'axios';
 
 const App = () => {
   const [data, setData] = useState([]);
@@ -10,36 +11,46 @@ const App = () => {
 
   // Função para carregar o arquivo Excel
   const loadSpreadsheet = async () => {
-    const response = await fetch('/dados.xlsx'); // Substitua com o caminho do arquivo salvo na pasta public
+    const response = await fetch('/your-file.xlsx'); // Substitua com o caminho do arquivo salvo na pasta public
     const arrayBuffer = await response.arrayBuffer();
     const workbook = XLSX.read(arrayBuffer, { type: 'array' });
-    
+
     // Considera que os dados estão na primeira planilha (Sheet1)
     const worksheet = workbook.Sheets[workbook.SheetNames[0]];
     const jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
-    
+
     // Define os dados no estado
     setData(jsonData);
   };
 
   // Função para salvar as alterações de volta no arquivo Excel
-  const saveSpreadsheet = () => {
+  const saveSpreadsheet = async () => {
     const newData = [...data];
     newData[editRow] = [login, password, connectionState];
 
     const worksheet = XLSX.utils.aoa_to_sheet(newData);
     const newWorkbook = XLSX.utils.book_new();
     XLSX.utils.book_append_sheet(newWorkbook, worksheet, 'Sheet1');
-    
-    // Cria um arquivo blob para download
+
+    // Cria um arquivo blob para upload
     const excelBuffer = XLSX.write(newWorkbook, { bookType: 'xlsx', type: 'array' });
     const blob = new Blob([excelBuffer], { type: 'application/octet-stream' });
 
-    // Cria o link de download
-    const link = document.createElement('a');
-    link.href = URL.createObjectURL(blob);
-    link.download = 'updated-file.xlsx';
-    link.click();
+    // Criar um formData para enviar o arquivo
+    const formData = new FormData();
+    formData.append('file', blob, 'your-file.xlsx');
+
+    try {
+      // Envia o arquivo para o backend
+      await axios.post('/upload', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
+      alert('Arquivo salvo com sucesso!');
+    } catch (error) {
+      console.error('Erro ao salvar o arquivo:', error);
+    }
   };
 
   const handleEdit = (rowIndex) => {
@@ -96,7 +107,7 @@ const App = () => {
         </table>
       )}
 
-      {data.length > 0 && <button onClick={saveSpreadsheet}>Save to File</button>}
+      {data.length > 0 && <button onClick={saveSpreadsheet}>Save to Server</button>}
     </div>
   );
 };
