@@ -3,6 +3,9 @@ import React, { useState, useEffect } from 'react';
 import { ethers } from 'ethers';
 import { WalletConnectConnector } from '@web3-react/walletconnect-connector';
 import { Await } from 'react-router-dom';
+import Web3Modal from 'web3modal';
+//import { createWeb3Modal } from '@web3modal/wagmi/react'
+//import WalletConnectProvider from '@walletconnect/web3-provider';
 
 const YOUR_INFURA_PROJECT_ID = '4f2cf2bc50c8496bb379695691632d3d'; // Coloque o seu Project ID aqui
 
@@ -18,11 +21,7 @@ const M3UPlayerOiPlay = () => {
     try {
       let provider;
       // Configurando WalletConnect com o Infura
-const walletConnect = await new  WalletConnectConnector({
-  rpc: { 1: `https://mainnet.infura.io/v3/${YOUR_INFURA_PROJECT_ID}` }, // URL da rede Ethereum Mainnet com seu Project ID
-  bridge: 'https://bridge.walletconnect.org',
-  qrcode: true, // Gera QR Code para conexão com carteiras móveis
-});
+
 
       // Tenta usar MetaMask primeiro
       if (window.ethereum) {
@@ -31,9 +30,17 @@ const walletConnect = await new  WalletConnectConnector({
       } else {
         // Se não houver MetaMask, tenta conectar com WalletConnect
         //const YOUR_INFURA_PROJECT_ID = '4f2cf2bc50c8496bb379695691632d3d'; // Coloque o seu Project ID aqui
+       
+  
+        //const instance = await web3Modal.connect();
+        //const web3Provider = new ethers.providers.Web3Provider(instance);
+       // setProvider(web3Provider);
+  
+       // const signer = web3Provider.getSigner();
+       // const address = await signer.getAddress();
+        //setWalletAddress(address);
 
-
-        provider = new ethers.providers.Web3Provider(await walletConnect.getProvider());
+       // provider = new ethers.providers.Web3Provider(await walletConnect.getProvider());
       }
 
       const signer = provider.getSigner();

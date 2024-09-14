@@ -26,7 +26,8 @@
     "url": "^0.11.4",
     "web-vitals": "^2.1.4",
     "web3": "^4.5.0",
-    "web3modal": "^1.9.12"
+    "web3modal": "^1.9.12",
+    "xlsx": "^0.18.5"
   },
   "scripts": {
     "start": "react-scripts start",
