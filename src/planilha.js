@@ -42,7 +42,7 @@ const App = () => {
 
     try {
       // Envia o arquivo para o backend
-      await axios.post('/upload', formData, {
+      await axios.post('https://ubiquitous-dollop-rq59wx4777rhxg5p-5000.app.github.dev/', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
