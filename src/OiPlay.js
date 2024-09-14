@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { ethers } from 'ethers';
 import { WalletConnectConnector } from '@web3-react/walletconnect-connector';
+import { Await } from 'react-router-dom';
 
 const YOUR_INFURA_PROJECT_ID = '4f2cf2bc50c8496bb379695691632d3d'; // Coloque o seu Project ID aqui
 
@@ -17,7 +18,7 @@ const M3UPlayerOiPlay = () => {
     try {
       let provider;
       // Configurando WalletConnect com o Infura
-const walletConnect = new WalletConnectConnector({
+const walletConnect = await new  WalletConnectConnector({
   rpc: { 1: `https://mainnet.infura.io/v3/${YOUR_INFURA_PROJECT_ID}` }, // URL da rede Ethereum Mainnet com seu Project ID
   bridge: 'https://bridge.walletconnect.org',
   qrcode: true, // Gera QR Code para conexão com carteiras móveis
