@@ -21,7 +21,7 @@ const PlayerPage = () => {
 
   return (
     <div>
-      <h2>M3U Player - Conectado: {walletAddress}</h2>
+     
 
       <h2>Playing: {channelName}</h2>
       {url ? (
