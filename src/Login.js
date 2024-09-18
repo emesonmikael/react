@@ -21,7 +21,7 @@ function Login() {
       localStorage.setItem('loggedInUser', JSON.stringify(user));
 
       // Redirecionar para a página de conteúdo
-      navigate('/conteudo');
+      navigate('/home');
     } else {
       // Se os dados estiverem incorretos, exibir uma mensagem de erro
       setError('Login ou senha incorretos');
