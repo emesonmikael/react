@@ -23,12 +23,19 @@ import M3UPlayerOiPlay from './OiPlay';
 import M3UPlayerLooke from './Looke';
 import M3UPlayerFilmicca from './Filmicca';
 import M3UPlayerLancamentos2024 from './Lancamentos2024';
+import Login from './Login';
+import Conteudo from './conteudo';
+import Cadastro from './cadastro';
+import EditarPerfil from './EditatPerfil';
 
 const App = () => {
   return (
     <Router>
       <Routes>
       <Route path="/" element={<Home />} />
+      <Route path="/cadastro" element={<Cadastro />} />
+        <Route path="/editar-perfil" element={<EditarPerfil />} />
+        <Route path="/login" element={<Login />} />
         <Route path="/netfli" element={<M3UPlayer />} />
         <Route path="/Globo" element={<M3UPlayerGloboplay />} />
         <Route path="/Hbo" element={<M3UPlayerHbo />} />
