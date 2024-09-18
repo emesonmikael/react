@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import ReactPlayer from 'react-player';
 import { saveAs } from 'file-saver';
 import { useNavigate } from 'react-router-dom';
+import { ethers } from 'ethers';
 
 const M3UPlayerAmazonPrime = () => {
   const [channels, setChannels] = useState([]);
