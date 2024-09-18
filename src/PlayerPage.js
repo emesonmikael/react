@@ -11,13 +11,7 @@ const PlayerPage = () => {
   const params = new URLSearchParams(location.search);
   const url = params.get('url');
   const [walletAddress, setWalletAddress] = useState(null);
-  if (window.ethereum) {
-    provider = new ethers.providers.Web3Provider(window.ethereum);
-    await provider.send("eth_requestAccounts", []); // Solicita ao usuário que conecte a carteira
-  } 
-  const signer = provider.getSigner();
-  const address = await signer.getAddress();
-  setWalletAddress(address); // Define o endereço da carteira conectada
+ 
 
   return (
     <div>
