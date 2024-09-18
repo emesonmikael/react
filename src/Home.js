@@ -5,17 +5,7 @@ import M3UPlayer from "./M3UPlayer2";
 import PlayerPage from './PlayerPage';
 
 function Home(){
-    const navigate = useNavigate();
-
-  useEffect(() => {
-    // Verificar se o usuário está logado
-    const loggedInUser = localStorage.getItem('loggedInUser');
-    
-    if (!loggedInUser) {
-      // Se o usuário não está logado, redirecionar para a página de login
-      navigate('/login');
-    }
-  }, [navigate]);
+  
 
     return(
         <div>

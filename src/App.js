@@ -32,8 +32,8 @@ const App = () => {
   return (
     <Router>
       <Routes>
-      <Route path="/" element={<Home/>} />
-      <Route path="/cadastro" element={<Cadastro />} />
+        <Route path="/" element={<Home/>} />
+        <Route path="/cadastro" element={<Cadastro />} />
         <Route path="/editar-perfil" element={<EditarPerfil />} />
         <Route path="/login" element={<Login />} />
         <Route path="/netfli" element={<M3UPlayer />} />
