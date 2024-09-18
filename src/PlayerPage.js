@@ -10,7 +10,6 @@ const PlayerPage = () => {
   const location = useLocation();
   const params = new URLSearchParams(location.search);
   const url = params.get('url');
-  const [walletAddress, setWalletAddress] = useState(null);
  
 
   return (
