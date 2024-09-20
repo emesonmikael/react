@@ -5,11 +5,15 @@ import M3UPlayer from "./M3UPlayer2";
 import PlayerPage from './PlayerPage';
 
 function Home(){
-  
+    const navigate = useNavigate();
+
+    const goToLogin = () => {
+      navigate("/login"); // Redireciona para a página de login
+    };
 
     return(
         <div>
- <h1> pagina home</h1>
+ <h1> pagina home</h1>  <button onClick={goToLogin}>Conectar Carteira</button>
  <a href="https://streamer-liard.vercel.app/netfli">
       Netflix Filme  
 <p>
