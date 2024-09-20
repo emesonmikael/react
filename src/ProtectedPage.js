@@ -1,7 +1,7 @@
 
 import React from "react";
 
-const ProtectedPage = ({savedAccount}) => {
+const ProtectedPage = () => {
   return (
     <div>
       <h2>Página Protegida</h2>

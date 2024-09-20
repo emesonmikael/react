@@ -5,6 +5,7 @@ import ProtectedPage from "./ProtectedPage";
 import LoginPage from "./LoginPage";
 import M3UPlayer from './M3UPlayer';
 import PlayerPage from './PlayerPage';
+import Conteudo from './conteudo';
 
 function App() {
   const [account, setAccount] = useState(null);
@@ -63,10 +64,10 @@ function App() {
 
           {/* Múltiplas páginas protegidas */}
           <Route
-            path="/protected"
+            path="/Conteudo"
             element={
               <PrivateRoute>
-                <ProtectedPage />
+                <Conteudo />
               </PrivateRoute>
             }
           />
