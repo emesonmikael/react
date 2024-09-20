@@ -12,12 +12,6 @@ const HomePage = () => {
     <div>
       <h2>Bem-vindo à Página Inicial</h2>
       <p>Esta é uma página pública. Conecte sua carteira para acessar conteúdo exclusivo.</p>
-      <a href="https://streamer-liard.vercel.app/netfli">
-      Netflix Filme  
-<p>
-
-</p>
-</a>
       <button onClick={goToLogin}>Conectar Carteira</button>
     </div>
   );
