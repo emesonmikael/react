@@ -1,8 +1,9 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { ethers } from "ethers";
+import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
 import M3UPlayer from './M3UPlayer';
 import PlayerPage from './PlayerPage';
-import Home from './Home';
+import HomePage from "./Home";
 import M3UPlayerHbo from './M3UPlayer copy';
 import M3UPlayerGloboplay from './Globoplay';
 import M3UPlayerAmazonPrime from './ amazon';
@@ -23,20 +24,43 @@ import M3UPlayerOiPlay from './OiPlay';
 import M3UPlayerLooke from './Looke';
 import M3UPlayerFilmicca from './Filmicca';
 import M3UPlayerLancamentos2024 from './Lancamentos2024';
-import Login from './Login';
+import LoginPage from "./Login";
 import Conteudo from './conteudo';
 import Cadastro from './cadastro';
 import EditarPerfil from './EditatPerfil';
 
 const App = () => {
+  const [account, setAccount] = useState(null);
+
+  // Função para conectar a MetaMask
+  const connectWallet = async () => {
+    if (window.ethereum) {
+      try {
+        const accounts = await window.ethereum.request({
+          method: "eth_requestAccounts",
+        });
+        setAccount(accounts[0]); // Guardar a conta conectada
+      } catch (err) {
+        console.error("Erro ao conectar a carteira", err);
+      }
+    } else {
+      console.error("MetaMask não encontrada");
+    }
+  };
+
+  // Rota protegida
+  const PrivateRoute = ({ children }) => {
+    return account ? children : <Navigate to="/login" />;
+  };
+
   return (
     <Router>
       <Routes>
         <Route path="/" element={<Home/>} />
-        <Route path="/cadastro" element={<Cadastro />} />
+        <Route path="/cadastro" element={<PrivateRoute><Cadastro /> </PrivateRoute>} />
         <Route path="/editar-perfil" element={<EditarPerfil />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/netfli" element={<M3UPlayer />} />
+        <Route path="/netfli" element={<PrivateRoute><M3UPlayer /> </PrivateRoute>} />
         <Route path="/Globo" element={<M3UPlayerGloboplay />} />
         <Route path="/Hbo" element={<M3UPlayerHbo />} />
         <Route path="/DisneyPlus" element={<M3UPlayerDisneyPlus />} />
