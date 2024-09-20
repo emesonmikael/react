@@ -40,7 +40,7 @@ function App() {
     }
   }, []);
 
-  // Rota protegida
+  // Rota protegida reutilizável
   const PrivateRoute = ({ children }) => {
     return account ? children : <Navigate to="/login" />;
   };
@@ -60,6 +60,8 @@ function App() {
 
         <Routes>
           <Route path="/" element={<HomePage />} />
+
+          {/* Múltiplas páginas protegidas */}
           <Route
             path="/protected"
             element={
@@ -68,8 +70,14 @@ function App() {
               </PrivateRoute>
             }
           />
-           <Route path="/netfli" element={<PrivateRoute><M3UPlayer /> </PrivateRoute>} />
-           <Route path="/netfli/player/:channelName" element={<PrivateRoute><PlayerPage /></PrivateRoute>} />
+          <Route
+            path="/netfli"
+            element={
+              <PrivateRoute>
+                <M3UPlayer />
+              </PrivateRoute>
+            }
+          />
           <Route path="/login" element={<LoginPage connectWallet={connectWallet} />} />
         </Routes>
       </div>
