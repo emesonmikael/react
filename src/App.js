@@ -4,6 +4,7 @@ import HomePage from "./HomePage";
 import ProtectedPage from "./ProtectedPage";
 import LoginPage from "./LoginPage";
 import M3UPlayer from './M3UPlayer';
+import PlayerPage from './PlayerPage';
 
 function App() {
   const [account, setAccount] = useState(null);
