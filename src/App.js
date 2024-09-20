@@ -78,6 +78,7 @@ function App() {
               </PrivateRoute>
             }
           />
+          <Route path="/netfli/player/:channelName" element={<PlayerPage />} />
           <Route path="/login" element={<LoginPage connectWallet={connectWallet} />} />
         </Routes>
       </div>
