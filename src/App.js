@@ -75,9 +75,9 @@ function App() {
           <Route
             path="/netfli"
             element={
-              <PrivateRoute>
+              
                 <M3UPlayer />
-              </PrivateRoute>
+              
             }
           />
            <Route path="/Hbo" element={<M3UPlayerHbo />} />
