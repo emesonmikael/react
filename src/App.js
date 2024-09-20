@@ -124,27 +124,27 @@ function App() {
           <Route path="/netfli/player/:channelName" element={<PrivateRoute><PlayerPage /></PrivateRoute>} />
           <Route path="/Globo/player/:channelName" element={<PrivateRoute><PlayerPage /></PrivateRoute>} />
         <Route path="/DisneyPlus/player/:channelName" element={<PrivateRoute><PlayerPage /></PrivateRoute>} />
-        <Route path="/AmazonPrime/player/:channelName" element={<PlayerPage />} />
+        <Route path="/AmazonPrime/player/:channelName" element={<PrivateRoute><PlayerPage /></PrivateRoute>} />
 
-        <Route path="/ParamountPlus/player/:channelName" element={<PlayerPage />} />
-        <Route path="/Max/player/:channelName" element={<PlayerPage />} />
-        <Route path="/Clarovideo/player/:channelName" element={<PlayerPage />} />
-        <Route path="/GooglePlayMovies/player/:channelName" element={<PlayerPage/>} />
+        <Route path="/ParamountPlus/player/:channelName" element={<PrivateRoute><PlayerPage /></PrivateRoute>} />
+        <Route path="/Max/player/:channelName" element={<PrivateRoute><PlayerPage /></PrivateRoute>} />
+        <Route path="/Clarovideo/player/:channelName" element={<PrivateRoute><PlayerPage /></PrivateRoute>} />
+        <Route path="/GooglePlayMovies/player/:channelName" element={<PrivateRoute><PlayerPage /></PrivateRoute>} />
 
-        <Route path="/MGMChannel/player/:channelName" element={<PlayerPage />} />
-        <Route path="/Oldflix/player/:channelName" element={<PlayerPage  />} />
+        <Route path="/MGMChannel/player/:channelName" element={<PrivateRoute><PlayerPage /></PrivateRoute>} />
+        <Route path="/Oldflix/player/:channelName" element={<PrivateRoute><PlayerPage /></PrivateRoute>} />
 
-        <Route path="/NOW/player/:channelName" element={<PlayerPage  />} />
-        <Route path="/Vudu/player/:channelName" element={<PlayerPage />} />
-        <Route path="/AMConDemand/player/:channelName" element={<PlayerPage />} />
-        <Route path="/ParamountPlusAppleTVChannel/player/:channelName" element={<PlayerPage  />} />
-        <Route path="/UniverVideo/player/:channelName" element={<PlayerPage  />} />
+        <Route path="/NOW/player/:channelName" element={<PrivateRoute><PlayerPage /></PrivateRoute>} />
+        <Route path="/Vudu/player/:channelName" element={<PrivateRoute><PlayerPage /></PrivateRoute>} />
+        <Route path="/AMConDemand/player/:channelName" element={<PrivateRoute><PlayerPage /></PrivateRoute>} />
+        <Route path="/ParamountPlusAppleTVChannel/player/:channelName" element={<PrivateRoute><PlayerPage /></PrivateRoute>} />
+        <Route path="/UniverVideo/player/:channelName" element={<PrivateRoute><PlayerPage /></PrivateRoute>} />
         
-        <Route path="/NetflixbasicwithAds/player/:channelName" element={<PlayerPage/>} />
-        <Route path="/OiPlay/player/:channelName" element={<PlayerPage />} />
-        <Route path="/Looke/player/:channelName" element={<PlayerPage />} />
-        <Route path="/Filmicca/player/:channelName" element={<PlayerPage />} />
-        <Route path="/Lancamentos2024/player/:channelName" element={<PlayerPage />} />
+        <Route path="/NetflixbasicwithAds/player/:channelName" element={<PrivateRoute><PlayerPage /></PrivateRoute>} />
+        <Route path="/OiPlay/player/:channelName" element={<PrivateRoute><PlayerPage /></PrivateRoute>} />
+        <Route path="/Looke/player/:channelName" element={<PrivateRoute><PlayerPage /></PrivateRoute>} />
+        <Route path="/Filmicca/player/:channelName" element={<PrivateRoute><PlayerPage /></PrivateRoute>} />
+        <Route path="/Lancamentos2024/player/:channelName" element={<PrivateRoute><PlayerPage /></PrivateRoute>} />
           <Route path="/login" element={<LoginPage connectWallet={connectWallet} />} />
         </Routes>
       </div>
