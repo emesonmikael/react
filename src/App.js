@@ -6,6 +6,7 @@ import LoginPage from "./LoginPage";
 import M3UPlayer from './M3UPlayer';
 import PlayerPage from './PlayerPage';
 import Conteudo from './conteudo';
+import M3UPlayerHbo from './M3UPlayer copy';
 
 function App() {
   const [account, setAccount] = useState(null);
