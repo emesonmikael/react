@@ -79,6 +79,8 @@ function App() {
               </PrivateRoute>
             }
           />
+           <Route path="/Hbo" element={<M3UPlayerHbo />} />
+           <Route path="/Hbo/player/:channelName" element={<PlayerPage />} />
           <Route path="/netfli/player/:channelName" element={<PrivateRoute><PlayerPage /></PrivateRoute>} />
           <Route path="/login" element={<LoginPage connectWallet={connectWallet} />} />
         </Routes>
