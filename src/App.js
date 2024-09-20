@@ -122,8 +122,8 @@ function App() {
 
            <Route path="/Hbo/player/:channelName" element={<PrivateRoute><PlayerPage /></PrivateRoute>} />
           <Route path="/netfli/player/:channelName" element={<PrivateRoute><PlayerPage /></PrivateRoute>} />
-          <Route path="/Globo/player/:channelName" element={{<PrivateRoute><PlayerPage /></PrivateRoute>} />
-        <Route path="/DisneyPlus/player/:channelName" element={{<PrivateRoute><PlayerPage /></PrivateRoute>} />
+          <Route path="/Globo/player/:channelName" element={<PrivateRoute><PlayerPage /></PrivateRoute>} />
+        <Route path="/DisneyPlus/player/:channelName" element={<PrivateRoute><PlayerPage /></PrivateRoute>} />
         <Route path="/AmazonPrime/player/:channelName" element={<PlayerPage />} />
 
         <Route path="/ParamountPlus/player/:channelName" element={<PlayerPage />} />
