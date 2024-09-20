@@ -6,7 +6,7 @@ const LoginPage = ({ connectWallet }) => {
 
   const handleLogin = async () => {
     await connectWallet();
-    navigate("/netfli"); // Redireciona para a página protegida após a conexão
+    //navigate("/netfli"); // Redireciona para a página protegida após a conexão
   };
 
   return (
