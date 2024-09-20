@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-d
 import HomePage from "./HomePage";
 import ProtectedPage from "./ProtectedPage";
 import LoginPage from "./LoginPage";
+import M3UPlayer from './M3UPlayer';
 
 function App() {
   const [account, setAccount] = useState(null);
@@ -66,6 +67,8 @@ function App() {
               </PrivateRoute>
             }
           />
+           <Route path="/netfli" element={<PrivateRoute><M3UPlayer /> </PrivateRoute>} />
+           <Route path="/netfli/player/:channelName" element={<PrivateRoute><PlayerPage /></PrivateRoute>} />
           <Route path="/login" element={<LoginPage connectWallet={connectWallet} />} />
         </Routes>
       </div>
