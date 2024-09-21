@@ -20,9 +20,12 @@ const LoginPage = ({ connectWallet }) => {
        // Chama a função isSubscriberActive do contrato
        const status = await contract.isSubscriberActive(savedAccount);
        console.log(status);
+       if(status == true){
+        navigate("/Conteudo"); // Redireciona para a página protegida após a conexão
+       }
     }
     await connectWallet();
-    navigate("/Conteudo"); // Redireciona para a página protegida após a conexão
+   
   };
 
   return (
