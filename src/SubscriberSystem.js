@@ -106,7 +106,7 @@ const SubscriberSystem = () => {
 
                 // Renova a assinatura após o pagamento
                 const contract = new ethers.Contract(contractAddress, SubscriberManagerABI, signer);
-                const tx = await contract.renewSubscription(planId{gasLimit: ethers.utils.hexlify(300000)});
+                const tx = await contract.renewSubscription(planId,{gasLimit: ethers.utils.hexlify(300000)});
                 await tx.wait();
                 setSuccess(true);
             } else {
