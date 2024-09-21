@@ -29,12 +29,16 @@ const LoginPage = ({ connectWallet }) => {
     await connectWallet();
    
   };
+  const registra = async () => {
+    navigate("/Subscriber?ref=0x842249350ec82e6347fee77cb29ece9131dd828b");
+  };
 
   return (
     <div>
       <h2>Conectar Carteira</h2>
       <p>Por favor, conecte sua carteira para acessar o conteúdo protegido.</p>
-      <button onClick={handleLogin}>Conectar MetaMask</button>
+      <button onClick={registra}> registra</button>
+      <button onClick={handleLogin}>Conectar</button>
     </div>
   );
 };
