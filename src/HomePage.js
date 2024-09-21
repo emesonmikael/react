@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { ethers } from 'ethers';
 import SubscriberManagerABI from './SubscriberManagerABI.json'; // ABI do contrato
-import React, { useState, useEffect } from 'react';
+import  { useState, useEffect } from 'react';
 
 const HomePage = () => {
   const navigate = useNavigate();
