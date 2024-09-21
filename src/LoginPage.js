@@ -17,6 +17,8 @@ const LoginPage = ({ connectWallet }) => {
       const signer = provider.getSigner();
        // Conecta-se ao contrato usando a ABI e o endereço
        const contract = new ethers.Contract(contractAddress, SubscriberManagerABI, signer);
+       // Chama a função isSubscriberActive do contrato
+       const status = await contract.isSubscriberActive(savedAccount);
     }
     await connectWallet();
     navigate("/Conteudo"); // Redireciona para a página protegida após a conexão
