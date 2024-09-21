@@ -19,6 +19,7 @@ const LoginPage = ({ connectWallet }) => {
        const contract = new ethers.Contract(contractAddress, SubscriberManagerABI, signer);
        // Chama a função isSubscriberActive do contrato
        const status = await contract.isSubscriberActive(savedAccount);
+       console.log(status);
     }
     await connectWallet();
     navigate("/Conteudo"); // Redireciona para a página protegida após a conexão
