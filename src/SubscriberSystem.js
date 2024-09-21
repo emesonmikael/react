@@ -35,7 +35,7 @@ const SubscriberSystem = () => {
             const accounts = await provider.send("eth_requestAccounts", []);
             setAccount(accounts[0]);
 
-            const referralLink =` ${window.location.origin}/?ref=${accounts[0]}`;
+            const referralLink = `${window.location.origin}/?ref=${accounts[0]}`;
             setReferralLink(referralLink);
 
             // Verifica informações do assinante
@@ -123,12 +123,18 @@ const SubscriberSystem = () => {
             {account && (
                 <div>
                     <p>Seu link de referência: <a href={referralLink}>{referralLink}</a></p>
-                    <p>Status: {subscriberInfo.isTrial ? 'Período de Teste' : 'Assinante'}</p>
-                    <p>Plano: {subscriberInfo.plan.toString()}</p> {/* Converte o BigNumber em string */}
-                    <p>Data de Expiração: {subscriberInfo.subscriptionExpiry}</p>
-                    <p>Recompensa Acumulada: {subscriberInfo.reward} Tokens</p> {/* Corrigido */}
+                    {/* Verifica se subscriberInfo não é nulo antes de renderizar */}
+                    {subscriberInfo ? (
+                        <div>
+                            <p>Status: {subscriberInfo.isTrial ? 'Período de Teste' : 'Assinante'}</p>
+                            <p>Plano: {subscriberInfo.plan.toString()}</p> {/* Converte o BigNumber em string */}
+                            <p>Data de Expiração: {subscriberInfo.subscriptionExpiry}</p>
+                            <p>Recompensa Acumulada: {subscriberInfo.reward} Tokens</p>
+                        </div>
+                    ) : (
+                        <p>Carregando informações do assinante...</p>
+                    )}
                 </div>
-              
             )}
 
             <h3>Registrar-se</h3>
