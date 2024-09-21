@@ -41,7 +41,13 @@ const SubscriberSystem = () => {
             // Verifica informações do assinante
             const contract = new ethers.Contract(contractAddress, SubscriberManagerABI, signer);
             const subscriber = await contract.getSubscriberInfo(accounts[0]);
-            setSubscriberInfo(subscriber);
+
+            // Convertemos os valores BigNumber para strings legíveis
+            setSubscriberInfo({
+                ...subscriber,
+                subscriptionExpiry: new Date(subscriber.subscriptionExpiry * 1000).toLocaleString(),
+                reward: ethers.utils.formatUnits(subscriber.reward, 18) // Converte a recompensa para string legível
+            });
         } catch (error) {
             console.error('Erro ao conectar a carteira:', error);
             setErrorMessage("Erro ao conectar carteira. Verifique se a MetaMask está instalada e configurada corretamente.");
@@ -91,7 +97,10 @@ const SubscriberSystem = () => {
             const provider = new ethers.providers.Web3Provider(window.ethereum);
             const contract = new ethers.Contract(contractAddress, SubscriberManagerABI, provider);
             const price = await contract.planPrices(planId);
-            setPlanPrice(ethers.utils.formatUnits(price, 18)); // Converte para valor humano legível
+
+            // Converte o preço para uma string legível
+            const formattedPrice = ethers.utils.formatUnits(price, 18);
+            setPlanPrice(formattedPrice);
             return price;
         } catch (error) {
             console.error('Erro ao buscar preço do plano:', error);
@@ -110,8 +119,8 @@ const SubscriberSystem = () => {
                         <div>
                             <p>Status: {subscriberInfo.isTrial ? 'Período de Teste' : 'Assinante'}</p>
                             <p>Plano: {subscriberInfo.plan}</p>
-                            <p>Data de Expiração: {new Date(subscriberInfo.subscriptionExpiry * 1000).toLocaleString()}</p>
-                            <p>Recompensa Acumulada: {ethers.utils.formatUnits(subscriberInfo.reward, 18)} Tokens</p>
+                            <p>Data de Expiração: {subscriberInfo.subscriptionExpiry}</p>
+                            <p>Recompensa Acumulada: {subscriberInfo.reward} Tokens</p> {/* Corrigido */}
                         </div>
                     )}
                 </div>
