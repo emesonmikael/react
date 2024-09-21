@@ -159,8 +159,8 @@ const SubscriberSystem = () => {
             )}
 
             <h3>Registrar-se</h3>
-            <button onClick={registerWithReferral}>Registrar com Referência</button>
-            <button onClick={registerWith}>Registrar sem Referência</button>
+            <button onClick={registerWithReferral}>Registrar </button>
+            
 
             <h3>Renovar Assinatura</h3>
             <input
