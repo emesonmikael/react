@@ -18,6 +18,11 @@ const HomePage = () => {
     const contractAddress = '0x823B305461153DEaa4B5f0dE85C0310ff1c235C6'; // Endereço do contrato
     const paymentTokenAddress = '0x7D928bDC1Ae6dCC6b4D7c744c3603aD4f64e874f'; // Endereço do token de pagamento
 
+    useEffect(() => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const referrer = urlParams.get('ref');
+      if (referrer) setReferrer(referrer);
+  }, []);
 
   const goToLogin = () => {
     navigate("/login"); // Redireciona para a página de login
