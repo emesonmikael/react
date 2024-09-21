@@ -27,6 +27,7 @@ const LoginPage = ({ connectWallet }) => {
      //  {alert('regitre para ter acesso aos onteudos');}
    // }
     const walletAddress = await connectWallet();
+    console.log(walletAddress);
     const contractAddress = '0x2EF17eE49CC5205A2B6f3672dABEbadEDDCcDeD5';
       const provider = new ethers.providers.Web3Provider(window.ethereum);
       const signer = provider.getSigner();
