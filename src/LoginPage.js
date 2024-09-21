@@ -15,6 +15,8 @@ const LoginPage = ({ connectWallet }) => {
       const contractAddress = '0x2EF17eE49CC5205A2B6f3672dABEbadEDDCcDeD5';
       const provider = new ethers.providers.Web3Provider(window.ethereum);
       const signer = provider.getSigner();
+       // Conecta-se ao contrato usando a ABI e o endereço
+       const contract = new ethers.Contract(contractAddress, SubscriberManagerABI, signer);
     }
     await connectWallet();
     navigate("/Conteudo"); // Redireciona para a página protegida após a conexão
