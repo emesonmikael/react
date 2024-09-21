@@ -23,6 +23,7 @@ const LoginPage = ({ connectWallet }) => {
        if(status == true){
         navigate("/Conteudo"); // Redireciona para a página protegida após a conexão
        }
+       alert('regitre para ter acesso aos onteudos');
     }
     await connectWallet();
    
