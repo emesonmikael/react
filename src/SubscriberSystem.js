@@ -16,7 +16,11 @@ const SubscriberSystem = () => {
     const paymentTokenAddress = '0x7D928bDC1Ae6dCC6b4D7c744c3603aD4f64e874f'; // Endereço do token de pagamento
 
     // Verifica se o link contém um referenciador
-    
+    useEffect(() => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const referrer = urlParams.get('ref');
+        if (referrer) setReferrer(referrer);
+    }, []);
 
     // Conectar carteira e buscar informações do assinante
     const connectWallet = async () => {
@@ -31,7 +35,7 @@ const SubscriberSystem = () => {
             const accounts = await provider.send("eth_requestAccounts", []);
             setAccount(accounts[0]);
 
-            const referralLink = `${window.location.origin}/?ref=${accounts[0]}`;
+            const referralLink =` ${window.location.origin}/?ref=${accounts[0]}`;
             setReferralLink(referralLink);
 
             // Verifica informações do assinante
@@ -56,7 +60,7 @@ const SubscriberSystem = () => {
             const signer = provider.getSigner();
             const contract = new ethers.Contract(contractAddress, SubscriberManagerABI, signer);
 
-            const tx = await contract.register('0x4f1BcAFA90A127c7Fb53F5Ec9B50fFefC128fCf6')//referrer);
+            const tx = await contract.register(referrer);
             await tx.wait();
             setSuccess(true);
         } catch (error) {
@@ -74,13 +78,19 @@ const SubscriberSystem = () => {
             // Aprova o contrato para gastar os tokens
             const paymentToken = new ethers.Contract(paymentTokenAddress, ['function approve(address spender, uint256 amount) public returns (bool)'], signer);
             const planPrice = await getPlanPrice(planId);
-            await paymentToken.approve(contractAddress, planPrice);
 
-            // Renova a assinatura após o pagamento
-            const contract = new ethers.Contract(contractAddress, SubscriberManagerABI, signer);
-            const tx = await contract.renewSubscription(planId);
-            await tx.wait();
-            setSuccess(true);
+            // Verifica se o preço do plano é válido antes de realizar a aprovação
+            if (planPrice && planPrice.gt(0)) {
+                await paymentToken.approve(contractAddress, planPrice);
+
+                // Renova a assinatura após o pagamento
+                const contract = new ethers.Contract(contractAddress, SubscriberManagerABI, signer);
+                const tx = await contract.renewSubscription(planId);
+                await tx.wait();
+                setSuccess(true);
+            } else {
+                setErrorMessage('O preço do plano é inválido.');
+            }
         } catch (error) {
             console.error('Erro ao renovar a assinatura:', error);
             setSuccess(false);
@@ -97,6 +107,8 @@ const SubscriberSystem = () => {
             // Converte o preço para uma string legível
             const formattedPrice = ethers.utils.formatUnits(price, 18);
             setPlanPrice(formattedPrice);
+
+            // Retorna o BigNumber para uso nas transações
             return price;
         } catch (error) {
             console.error('Erro ao buscar preço do plano:', error);
@@ -105,43 +117,43 @@ const SubscriberSystem = () => {
 
     return (
         <div>
-        <h2>Sistema de Assinantes</h2>
-        {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
-        <button onClick={connectWallet}>Conectar Carteira</button>
-        {account && (
-            <div>
-                <p>Seu link de referência: <a href={referralLink}>{referralLink}</a></p>
-                {subscriberInfo && (
-                    <div>
-                        <p>Status: {subscriberInfo.isTrial ? 'Período de Teste' : 'Assinante'}</p>
-                        <p>Plano: {subscriberInfo.plan}</p>
-                        <p>Data de Expiração: {new Date(subscriberInfo.subscriptionExpiry * 1000).toLocaleString()}</p>
-                        <p>Recompensa Acumulada: {ethers.utils.formatUnits(subscriberInfo.reward, 18)} Tokens</p>
-                    </div>
-                )}
-            </div>
-        )}
+            <h2>Sistema de Assinantes</h2>
+            {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
+            <button onClick={connectWallet}>Conectar Carteira</button>
+            {account && (
+                <div>
+                    <p>Seu link de referência: <a href={referralLink}>{referralLink}</a></p>
+                    {subscriberInfo && (
+                        <div>
+                            <p>Status: {subscriberInfo.isTrial ? 'Período de Teste' : 'Assinante'}</p>
+                            <p>Plano: {subscriberInfo.plan}</p>
+                            <p>Data de Expiração: {subscriberInfo.subscriptionExpiry}</p>
+                            <p>Recompensa Acumulada: {subscriberInfo.reward} Tokens</p> {/* Corrigido */}
+                        </div>
+                    )}
+                </div>
+            )}
 
-        <h3>Registrar-se</h3>
-        <button onClick={registerWithReferral}>Registrar com Referência</button>
+            <h3>Registrar-se</h3>
+            <button onClick={registerWithReferral}>Registrar com Referência</button>
 
-        <h3>Renovar Assinatura</h3>
-        <input
-            type="number"
-            placeholder="ID do Plano (1, 2, 3, 4 ou 5)"
-            value={planId}
-            onChange={(e) => {
-                setPlanId(e.target.value);
-                getPlanPrice(e.target.value); // Pega o preço do plano escolhido
-            }}
-        />
-        {planPrice && <p>Preço do Plano: {planPrice} Tokens</p>}
-        <button onClick={renewSubscription}>Renovar</button>
+            <h3>Renovar Assinatura</h3>
+            <input
+                type="number"
+                placeholder="ID do Plano (1, 2, 3, 4 ou 5)"
+                value={planId}
+                onChange={(e) => {
+                    setPlanId(e.target.value);
+                    getPlanPrice(e.target.value); // Pega o preço do plano escolhido
+                }}
+            />
+            {planPrice && <p>Preço do Plano: {planPrice} Tokens</p>}
+            <button onClick={renewSubscription}>Renovar</button>
 
-        {success && <p>Operação realizada com sucesso!</p>}
-        {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
-    </div>
-);
+            {success && <p>Operação realizada com sucesso!</p>}
+            {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
+        </div>
+    );
 };
 
 export default SubscriberSystem;
