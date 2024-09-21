@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import SubscriberManagerABI from './SubscriberManagerABI.json'; // ABI do contrato
 
 const HomePage = () => {
   const navigate = useNavigate();
