@@ -160,15 +160,7 @@ const SubscriberSystem = () => {
 
             <h3>Registrar-se</h3>
             <button onClick={registerWithReferral}>Registrar com Referência</button>
-            <input
-                type="text"
-                placeholder="wallter referencia"
-                value={wallterreferrer}
-                onChange={(e) => {
-                    setWallterReferrer(e.target.value);
-                    
-                }}
-            />
+            <button onClick={registerWith}>Registrar sem Referência</button>
 
             <h3>Renovar Assinatura</h3>
             <input
