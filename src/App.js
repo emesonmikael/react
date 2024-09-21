@@ -26,7 +26,7 @@ import M3UPlayerOiPlay from './OiPlay';
 import M3UPlayerLooke from './Looke';
 import M3UPlayerFilmicca from './Filmicca';
 import M3UPlayerLancamentos2024 from './Lancamentos2024';
-
+import SubscriberSystem from './SubscriberSystem';
 
 function App() {
   const [account, setAccount] = useState(null);
