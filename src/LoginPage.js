@@ -9,7 +9,7 @@ const LoginPage = ({ connectWallet }) => {
   
 
   const handleLogin = async () => {
-    await connectWallet();
+    //await connectWallet();
     const savedAccount = localStorage.getItem("walletAddress");
     if (savedAccount) {
       const contractAddress = '0x2EF17eE49CC5205A2B6f3672dABEbadEDDCcDeD5';
@@ -26,7 +26,7 @@ const LoginPage = ({ connectWallet }) => {
        else 
        {alert('regitre para ter acesso aos onteudos');}
     }
-    //await connectWallet();
+    await connectWallet();
    
   };
   const registra = async () => {
