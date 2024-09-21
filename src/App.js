@@ -44,7 +44,7 @@ function App() {
         const signer = provider.getSigner();
 
         // Conecta-se ao contrato usando a ABI e o endereço
-        const contract = new ethers.Contract(contractAddress, SubscriptionManagerABI, signer);
+        const contract = new ethers.Contract(contractAddress, SubscriberManagerABI, signer);
 
         // Chama a função isSubscriberActive do contrato
         const status = await contract.isSubscriberActive(address);
