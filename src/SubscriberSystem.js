@@ -1,4 +1,4 @@
-import  { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ethers } from 'ethers';
 import SubscriberManagerABI from './SubscriberManagerABI.json'; // ABI do contrato
 
@@ -15,14 +15,21 @@ const SubscriberSystem = () => {
     const contractAddress = '0x823B305461153DEaa4B5f0dE85C0310ff1c235C6'; // Endereço do contrato
     const paymentTokenAddress = '0x7D928bDC1Ae6dCC6b4D7c744c3603aD4f64e874f'; // Endereço do token de pagamento
 
+    // Verifica se o link contém um referenciador
     useEffect(() => {
         const urlParams = new URLSearchParams(window.location.search);
         const referrer = urlParams.get('ref');
         if (referrer) setReferrer(referrer);
     }, []);
 
+    // Conectar carteira e buscar informações do assinante
     const connectWallet = async () => {
         try {
+            if (!window.ethereum) {
+                setErrorMessage("MetaMask não detectado!");
+                return;
+            }
+
             const provider = new ethers.providers.Web3Provider(window.ethereum);
             const signer = provider.getSigner();
             const accounts = await provider.send("eth_requestAccounts", []);
@@ -37,6 +44,7 @@ const SubscriberSystem = () => {
             setSubscriberInfo(subscriber);
         } catch (error) {
             console.error('Erro ao conectar a carteira:', error);
+            setErrorMessage("Erro ao conectar carteira. Verifique se a MetaMask está instalada e configurada corretamente.");
         }
     };
 
@@ -93,6 +101,7 @@ const SubscriberSystem = () => {
     return (
         <div>
             <h2>Sistema de Assinantes</h2>
+            {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
             <button onClick={connectWallet}>Conectar Carteira</button>
             {account && (
                 <div>
