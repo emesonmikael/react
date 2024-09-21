@@ -114,7 +114,7 @@ const SubscriberSystem = () => {
             <button onClick={connectWallet}>Conectar Carteira</button>
             {account && (
                 <div>
-                    <p>Seu link de referência: <a href={referralLink}>{referralLink}</a></p>
+                    
                     {subscriberInfo && (
                         <div>
                             <p>Status: {subscriberInfo.isTrial ? 'Período de Teste' : 'Assinante'}</p>
