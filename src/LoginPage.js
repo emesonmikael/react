@@ -10,7 +10,7 @@ const LoginPage = ({ connectWallet }) => {
     await connectWallet();
     const savedAccount = localStorage.getItem("walletAddress");
     if (savedAccount) {
-      
+      const contractAddress = '0xSeuContratoAqui';
     }
     navigate("/Conteudo"); // Redireciona para a página protegida após a conexão
   };
