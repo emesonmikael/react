@@ -123,14 +123,7 @@ const SubscriberSystem = () => {
             {account && (
                 <div>
                     <p>Seu link de referência: <a href={referralLink}>{referralLink}</a></p>
-                    {subscriberInfo && (
-                        <div>
-                            <p>Status: {subscriberInfo.isTrial ? 'Período de Teste' : 'Assinante'}</p>
-                            <p>Plano: {subscriberInfo.plan}</p>
-                            <p>Data de Expiração: {subscriberInfo.subscriptionExpiry}</p>
-                            <p>Recompensa Acumulada: {subscriberInfo.reward} Tokens</p> {/* Corrigido */}
-                        </div>
-                    )}
+                   
                 </div>
             )}
 
