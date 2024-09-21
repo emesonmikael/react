@@ -125,6 +125,12 @@ const SubscriberSystem = () => {
                     <p>Seu link de referência: <a href={referralLink}>{referralLink}</a></p>
                    
                 </div>
+                <div>
+                <p>Status: {subscriberInfo.isTrial ? 'Período de Teste' : 'Assinante'}</p>
+                <p>Plano: {subscriberInfo.plan.toString()}</p> {/* Converte o BigNumber em string */}
+                <p>Data de Expiração: {subscriberInfo.subscriptionExpiry}</p>
+                <p>Recompensa Acumulada: {subscriberInfo.reward} Tokens</p> {/* Corrigido */}
+            </div>
             )}
 
             <h3>Registrar-se</h3>
