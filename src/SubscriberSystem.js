@@ -59,8 +59,10 @@ const SubscriberSystem = () => {
             const provider = new ethers.providers.Web3Provider(window.ethereum);
             const signer = provider.getSigner();
             const contract = new ethers.Contract(contractAddress, SubscriberManagerABI, signer);
-
-            const tx = await contract.register(referrer);
+    
+            const tx = await contract.register(referrer, {
+                gasLimit: ethers.utils.hexlify(300000) // Define manualmente o limite de gas (ajuste conforme necessário)
+            });
             await tx.wait();
             setSuccess(true);
         } catch (error) {
