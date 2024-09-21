@@ -34,10 +34,7 @@ const HomePage = () => {
         const referralLink = ${window.location.origin}/?ref=${accounts[0]};
         setReferralLink(referralLink);
 
-        // Verifica informações do assinante
-        const contract = new ethers.Contract(contractAddress, SubscriberManagerABI, signer);
-        const subscriber = await contract.getSubscriberInfo(accounts[0]);
-        setSubscriberInfo(subscriber);
+       
     } catch (error) {
         console.error('Erro ao conectar a carteira:', error);
     }
