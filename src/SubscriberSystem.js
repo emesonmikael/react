@@ -20,7 +20,7 @@ const SubscriberSystem = () => {
     useEffect(() => {
         const urlParams = new URLSearchParams(window.location.search);
         const referrer = urlParams.get('ref');
-        if (referrer) setReferrer(wallterreferrer);
+        if (referrer) setReferrer(referrer);
     }, []);
 
     // Conectar carteira e buscar informações do assinante
