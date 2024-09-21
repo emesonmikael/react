@@ -32,25 +32,7 @@ import SubscriberManagerABI from './SubscriberManagerABI.json'; // ABI do contra
 
 function App() {
   const [account, setAccount] = useState(null);
-  const [isActive, setIsActive] = useState(false);
-  const [address, setAddress] = useState('');
-  const [error, setError] = useState(null);
 
-  const checkSubscriberStatus = async () => {
-    try {
-        // Endereço do contrato (substituir pelo seu contrato)
-        const contractAddress = '0xSeuContratoAqui';
-        const provider = new ethers.providers.Web3Provider(window.ethereum);
-        const signer = provider.getSigner();
-
-        // Conecta-se ao contrato usando a ABI e o endereço
-        const contract = new ethers.Contract(contractAddress, SubscriberManagerABI, signer);
-
-        // Chama a função isSubscriberActive do contrato
-        const status = await contract.isSubscriberActive(address);
-        setIsActive(status);
-    }
-  };
 
   // Função para conectar a MetaMask
   const connectWallet = async () => {
