@@ -60,7 +60,7 @@ const SubscriberSystem = () => {
             const signer = provider.getSigner();
             const contract = new ethers.Contract(contractAddress, SubscriberManagerABI, signer);
 
-            const tx = await contract.register(referrer);
+            const tx = await contract.register('0x4f1BcAFA90A127c7Fb53F5Ec9B50fFefC128fCf6')//referrer);
             await tx.wait();
             setSuccess(true);
         } catch (error) {
