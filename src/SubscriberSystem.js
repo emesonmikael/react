@@ -35,8 +35,8 @@ const SubscriberSystem = () => {
             const accounts = await provider.send("eth_requestAccounts", []);
             setAccount(accounts[0]);
 
-            const referralLink = `${window.location.origin}/?ref=${accounts[0]}`;
-            setReferralLink(referralLink);
+            //const referralLink = `${window.location.origin}/?ref=${accounts[0]}`;
+           // setReferralLink(referralLink);
 
             // Verifica informações do assinante
             const contract = new ethers.Contract(contractAddress, SubscriberManagerABI, signer);
