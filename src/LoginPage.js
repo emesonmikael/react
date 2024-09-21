@@ -26,7 +26,7 @@ const LoginPage = ({ connectWallet }) => {
        else 
        {alert('regitre para ter acesso aos onteudos');}
     }
-    await connectWallet();
+    //await connectWallet();
    
   };
   const registra = async () => {
