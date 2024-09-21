@@ -72,6 +72,24 @@ const SubscriberSystem = () => {
             setErrorMessage('Falha ao registrar. Tente novamente.');
         }
     };
+    const semReferencia ='0';
+    const registerWith = async () => {
+        try {
+            const provider = new ethers.providers.Web3Provider(window.ethereum);
+            const signer = provider.getSigner();
+            const contract = new ethers.Contract(contractAddress, SubscriberManagerABI, signer);
+    
+            const tx = await contract.register(semReferencia, {
+                gasLimit: ethers.utils.hexlify(300000) // Define manualmente o limite de gas (ajuste conforme necessário)
+            });
+            await tx.wait();
+            setSuccess(true);
+        } catch (error) {
+            console.error('Erro ao registrar com referência:', error);
+            setSuccess(false);
+            setErrorMessage('Falha ao registrar. Tente novamente.');
+        }
+    };
 
     const renewSubscription = async () => {
         try {
