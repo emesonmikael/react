@@ -100,7 +100,7 @@ function App() {
               
             }
           />
-          <Route path="/SubscriberSystem" element={<SubscriberSystem />} />
+          <Route path="/Subscriber" element={<SubscriberSystem />} />
            <Route path="/Hbo" element={<M3UPlayerHbo />} />
            <Route path="/Globo" element={<M3UPlayerGloboplay />} />
            <Route path="/DisneyPlus" element={<M3UPlayerDisneyPlus />} />
