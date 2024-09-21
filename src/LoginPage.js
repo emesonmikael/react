@@ -1,6 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { ethers } from 'ethers';
+import SubscriberManagerABI from './SubscriberManagerABI.json'; // ABI do contrato
 
 
 const LoginPage = ({ connectWallet }) => {
