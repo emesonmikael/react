@@ -6,6 +6,7 @@ const SubscriberSystem = () => {
     const [referralLink, setReferralLink] = useState('');
     const [account, setAccount] = useState('');
     const [referrer, setReferrer] = useState('');
+    const [wallterreferrer, setWallterReferrer] = useState('');
     const [subscriberInfo, setSubscriberInfo] = useState(null);
     const [planId, setPlanId] = useState('');
     const [success, setSuccess] = useState(null);
@@ -19,7 +20,7 @@ const SubscriberSystem = () => {
     useEffect(() => {
         const urlParams = new URLSearchParams(window.location.search);
         const referrer = urlParams.get('ref');
-        if (referrer) setReferrer(account);
+        if (referrer) setReferrer(wallterreferrer);
     }, []);
 
     // Conectar carteira e buscar informações do assinante
@@ -141,6 +142,15 @@ const SubscriberSystem = () => {
 
             <h3>Registrar-se</h3>
             <button onClick={registerWithReferral}>Registrar com Referência</button>
+            <input
+                type="text"
+                placeholder="wallter referencia"
+                value={wallterreferrer}
+                onChange={(e) => {
+                    setWallterReferrer(e.target.value);
+                    
+                }}
+            />
 
             <h3>Renovar Assinatura</h3>
             <input
