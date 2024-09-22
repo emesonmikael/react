@@ -4,7 +4,7 @@ import ABI from './ABI.json'
 //import SubscriberManagerABI from './SubscriberManagerABI.json'; // ABI do contrato
 import { BrowserRouter as Router, Route, Routes, useNavigate } from "react-router-dom";
 
-const LoginPage = ({ onLoginSuccess }) => {
+const LoginPage = () => {
   const [account, setAccount] = useState(null);
   const [isRegistered, setIsRegistered] = useState(false);
   const [loading, setLoading] = useState(false);
