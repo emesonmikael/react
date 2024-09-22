@@ -1,9 +1,11 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import LoginPage from './LoginPage';
 import ContentPage from './ContentPage';
-import AnotherPrivatePage from './AnotherPrivatePage';  // Exemplo de outra rota privada
+//import AnotherPrivatePage from './AnotherPrivatePage';  // Exemplo de outra rota privada
 import { useState } from 'react';
 import PrivateRoute from './PrivateRoute';  // Componente de rota privada
+import Conteudo from './conteudo';
+import M3UPlayerGloboplay from './Globoplay';
 
 function App() {
   const [isRegistered, setIsRegistered] = useState(false);
@@ -23,20 +25,14 @@ function App() {
           path="/content"
           element={
             <PrivateRoute isRegistered={isRegistered}>
-              <ContentPage />
+              <Conteudo />
             </PrivateRoute>
           }
         />
 
         {/* Outra rota privada */}
-        <Route
-          path="/another-private"
-          element={
-            <PrivateRoute isRegistered={isRegistered}>
-              <AnotherPrivatePage />
-            </PrivateRoute>
-          }
-        />
+        <Route path="/Globo" element={<PrivateRoute isRegistered={isRegistered}><M3UPlayerGloboplay /></PrivateRoute>} />
+        
       </Routes>
     </Router>
   );
