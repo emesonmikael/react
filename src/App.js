@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import LoginPage from './LoginPage';
 import PrivateRoute from './PrivateRoute';
 import ContentPage from './ContentPage';  // Página de conteúdo (rota privada)
+import SubscriberSystem from './SubscriberSystem'
 
 const App = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -14,7 +15,8 @@ const App = () => {
   return (
     <Router>
       <Routes>
-        <Route path="/login" element={<LoginPage onLoginSuccess={handleLoginSuccess} />} />
+      <Route path="/s" element={<SubscriberSystem />} />
+        <Route path="/" element={<LoginPage onLoginSuccess={handleLoginSuccess} />} />
         <Route 
           path="/content" 
           element={
