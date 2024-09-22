@@ -1,15 +1,15 @@
+
 import React, { useState, useEffect } from 'react';
 import { ethers } from 'ethers';
-import ABI from './ABI.json'
-//import SubscriberManagerABI from './SubscriberManagerABI.json'; // ABI do contrato
-import { BrowserRouter as Router, Route, Routes, useNavigate } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
+import ABI from './ABI.json';  // ABI do contrato
 
-const LoginPage = () => {
+const LoginPage = ({ onLoginSuccess }) => {
   const [account, setAccount] = useState(null);
   const [isRegistered, setIsRegistered] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
-
+  
   const navigate = useNavigate();
   const contractAddress = '0x2EF17eE49CC5205A2B6f3672dABEbadEDDCcDeD5';  // Endereço do contrato
 
@@ -36,14 +36,14 @@ const LoginPage = () => {
     try {
       const provider = new ethers.providers.Web3Provider(window.ethereum);
       const signer = provider.getSigner();
-      const contract = new ethers.Contract(contractAddress,ABI , signer);
+      const contract = new ethers.Contract(contractAddress, ABI, signer);
 
       const subscriberInfo = await contract.subscribers(account);
 
       if (subscriberInfo.isRegistered) {
         setIsRegistered(true);
-       // onLoginSuccess();
-        navigate("/Conteudo") ;
+        onLoginSuccess();  // Chama a função de sucesso de login
+        navigate('/content');  // Navega para a página /content
       } else {
         setError('Usuário não registrado.');
       }
