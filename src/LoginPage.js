@@ -1,51 +1,66 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from 'react';
+import { useWeb3React } from '@web3-react/core';
+import { injected } from './wallet/Connectors'; // Conector MetaMask
 import { ethers } from 'ethers';
-import SubscriberManagerABI from './SubscriberManagerABI.json'; // ABI do contrato
+import contractABI from './contractABI.json';  // ABI do contrato
 
+const LoginPage = ({ onLoginSuccess }) => {
+  const { active, account, activate, library } = useWeb3React();
+  const [isRegistered, setIsRegistered] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
 
-const LoginPage = ({ connectWallet }) => {
-  const navigate = useNavigate();
-  //const [account, setAccount] = useState(null);
+  const contractAddress = '0x...';  // Endereço do contrato
 
- 
-  
-
-  const handleLogin = async () => {
-    
-    const savedAccount = localStorage.getItem("walletAddress");
-    if (savedAccount) {
-      const contractAddress = '0x2EF17eE49CC5205A2B6f3672dABEbadEDDCcDeD5';
-      const provider = new ethers.providers.Web3Provider(window.ethereum);
-      const signer = provider.getSigner();
-      //Conecta-se ao contrato usando a ABI e o endereço
-      const contract = new ethers.Contract(contractAddress, SubscriberManagerABI, signer);
-       // Chama a função isSubscriberActive do contrato
-       const status = await contract.isSubscriberActive(savedAccount);
-       console.log(status);
-       if(status == true){
-        navigate("/Conteudo"); // Redireciona para a página protegida após a conexão
-       }
-       else 
-      {alert('regitre para ter acesso aos onteudos');}
+  // Conectar carteira
+  const connectWallet = async () => {
+    try {
+      await activate(injected);
+    } catch (err) {
+      console.error('Erro ao conectar carteira', err);
     }
-    //await connectWallet();
-  
-    
-   
-    
-   
   };
-  const registra = async () => {
-    navigate("/Subscriber?ref=0x842249350ec82e6347fee77cb29ece9131dd828b");
+
+  // Verificar se o usuário está registrado no contrato
+  const checkRegistration = async () => {
+    setLoading(true);
+    try {
+      const signer = library.getSigner();
+      const contract = new ethers.Contract(contractAddress, contractABI, signer);
+      const subscriberInfo = await contract.subscribers(account);
+
+      if (subscriberInfo.isRegistered) {
+        setIsRegistered(true);
+        onLoginSuccess();
+      } else {
+        setError('Usuário não registrado.');
+      }
+    } catch (err) {
+      console.error('Erro ao verificar registro', err);
+      setError('Erro ao verificar registro.');
+    } finally {
+      setLoading(false);
+    }
   };
+
+  useEffect(() => {
+    if (active && account) {
+      checkRegistration();
+    }
+  }, [active, account]);
 
   return (
     <div>
-      <h2>Conectar Carteira</h2>
-      <p>Por favor, conecte sua carteira para acessar o conteúdo protegido.</p>
-      <button onClick={registra}> registra</button>
-      <button onClick={handleLogin}>Conectar</button>
+      <h2>Login</h2>
+      {!active ? (
+        <button onClick={connectWallet}>Conectar Carteira</button>
+      ) : loading ? (
+        <p>Verificando registro...</p>
+      ) : isRegistered ? (
+        <p>Login realizado com sucesso!</p>
+      ) : (
+        <p>{error}</p>
+      )}
     </div>
   );
 };
