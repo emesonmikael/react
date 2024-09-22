@@ -5,7 +5,7 @@ import M3UPlayer from "./M3UPlayer2";
 import PlayerPage from './PlayerPage';
 
 function Conteudo() {
-  const navigate = useNavigate();
+ /**  const navigate = useNavigate();
 
   useEffect(() => {
     // Verificar se o usuário está logado
@@ -16,7 +16,7 @@ function Conteudo() {
       navigate('/login');
     }
   }, [navigate]);
-
+*/
   return (
     <div>
       <h1>Bem-vindo à página de conteúdo!</h1>
@@ -201,12 +201,7 @@ Amazon Prime
 <a href="https://streamer-liard.vercel.app/AmazonPrime">
 Amazon Prime
 </a>
-      <button onClick={() => {
-        localStorage.removeItem('loggedInUser'); // Fazer logout
-        navigate('/login'); // Redirecionar para a página de login
-      }}>
-        Logout
-      </button>
+      
     </div>
   );
 }

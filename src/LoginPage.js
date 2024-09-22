@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { ethers } from 'ethers';
 import ABI from './ABI.json'
 //import SubscriberManagerABI from './SubscriberManagerABI.json'; // ABI do contrato
+import { BrowserRouter as Router, Route, Routes, useNavigate } from "react-router-dom";
 
 const LoginPage = ({ onLoginSuccess }) => {
   const [account, setAccount] = useState(null);
@@ -9,6 +10,7 @@ const LoginPage = ({ onLoginSuccess }) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
+  const navigate = useNavigate();
   const contractAddress = '0x2EF17eE49CC5205A2B6f3672dABEbadEDDCcDeD5';  // Endereço do contrato
 
   // Conectar MetaMask diretamente usando ethers.js
@@ -41,6 +43,7 @@ const LoginPage = ({ onLoginSuccess }) => {
       if (subscriberInfo.isRegistered) {
         setIsRegistered(true);
         onLoginSuccess();
+        navigate("/Conteudo") ;
       } else {
         setError('Usuário não registrado.');
       }
