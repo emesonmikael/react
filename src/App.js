@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import Conteudo from './conteudo';
 import LoginPage from './LoginPage';
 import ContentPage from './ContentPage';
 import M3UPlayer from './M3UPlayer';
@@ -49,10 +50,10 @@ function App() {
 
         {/* Rota privada para /content */}
         <Route
-          path="/content"
+          path="/conteudo"
           element={
             <PrivateRoute isRegistered={isRegistered}>
-              <ContentPage />
+              <Conteudo />
             </PrivateRoute>
           }
         />
@@ -67,6 +68,7 @@ function App() {
               
           }
         />
+         <Route path="/Globo" element={<M3UPlayerGloboplay />} />
         <Route path="/DisneyPlus" element={<M3UPlayerDisneyPlus />} />
         <Route path="/AmazonPrime" element={<M3UPlayerAmazonPrime />} />
         <Route path="/ParamountPlus" element={<M3UPlayerParamountPlus />} />
