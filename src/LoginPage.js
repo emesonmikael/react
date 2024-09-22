@@ -8,7 +8,7 @@ const LoginPage = ({ connectWallet }) => {
   const navigate = useNavigate();
   //const [account, setAccount] = useState(null);
 
-  const connectWallet = async () => {
+  const connectWallet2 = async () => {
     if (window.ethereum) {
       try {
         const accounts = await window.ethereum.request({
