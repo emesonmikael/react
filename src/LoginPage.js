@@ -14,7 +14,7 @@ const LoginPage = ({ connectWallet }) => {
         const accounts = await window.ethereum.request({
           method: "eth_requestAccounts",
         });
-        setAccount(accounts[0]); // Guardar a conta conectada
+       // setAccount(accounts[0]); // Guardar a conta conectada
         localStorage.setItem("walletAddress", accounts[0]); // Salvar a conta no localStorage
       } catch (err) {
         console.error("Erro ao conectar a carteira", err);
