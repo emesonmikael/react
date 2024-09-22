@@ -17,7 +17,7 @@ function Conteudo() {
       <h1>Bem-vindo à página de conteúdo!</h1>
       <p>Somente usuários autenticados podem ver este conteúdo.</p>
       <button onClick={netfli}>Netflix</button>
-      <a href="https://streamer-liard.vercel.app/netfli">
+      <a href={netfli}>
       Netflix Filme  
 <p>
 
