@@ -3,7 +3,7 @@ import { ethers } from "ethers";
 import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
 import M3UPlayer from './M3UPlayer';
 import PlayerPage from './PlayerPage';
-import HomePage from "./Home";
+import HomePage from "./Home1";
 import M3UPlayerHbo from './M3UPlayer copy';
 import M3UPlayerGloboplay from './Globoplay';
 import M3UPlayerAmazonPrime from './ amazon';

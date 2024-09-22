@@ -1,203 +1,55 @@
-import React from "react";
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom'; // Para redirecionamento
-import M3UPlayer from "./M3UPlayer2";
-import PlayerPage from './PlayerPage';
-
-function Home(){
+import React, { useEffect, useState } from 'react';
+import { BrowserRouter as Router, Route, Routes, useNavigate } from 'react-router-dom';
+function Home() {
+    const [channels, setChannels] = useState([]);
     const navigate = useNavigate();
-
-    const goToLogin = () => {
-      navigate("/login"); // Redireciona para a página de login
+  
+    useEffect(() => {
+      // Carrega e processa o arquivo .m3u
+      fetch('/listam.m3u') // Certifique-se de que o arquivo .m3u está na pasta public
+        .then(response => response.text())
+        .then(data => {
+          const lines = data.split('\n');
+          const parsedChannels = [];
+  
+          for (let i = 0; i < lines.length; i++) {
+            if (lines[i].startsWith('#EXTINF')) {
+              const logoMatch = lines[i].match(/tvg-logo="(.*?)"/);
+              const nameMatch = lines[i].split(',')[1];
+  
+              if (logoMatch && nameMatch) {
+                const tvgLogo = logoMatch[1];
+                const name = nameMatch.trim().replace(/\s/g, ''); // Remove espaços para formar a rota
+                const streamUrl = lines[i + 2]?.trim(); // O URL está duas linhas abaixo
+                
+                parsedChannels.push({ name, tvgLogo, streamUrl });
+              }
+            }
+          }
+  
+          setChannels(parsedChannels);
+        })
+        .catch(error => console.error('Erro ao carregar o arquivo .m3u', error));
+    }, []);
+  
+    const handleImageClick = (name) => {
+      navigate(`/${name}`); // Redireciona para a rota com base no nome do canal
     };
-
-    return(
-        <div>
- <h1> pagina home</h1>  <button onClick={goToLogin}>Conectar Carteira</button>
- <a href="https://streamer-liard.vercel.app/netfli">
-      Netflix Filme  
-<p>
-
-</p>
-</a>
-<a href="https://streamer-liard.vercel.app/Hbo">
-HBO Max
-</a>
-
-<p>
-
-</p>
-<a href="https://streamer-liard.vercel.app/Globo">
-Globoplay
-</a>
-<p></p>
-<a href="https://streamer-liard.vercel.app/AmazonPrime">
-Amazon Prime
-</a>
-<p></p>
-<a href="https://streamer-liard.vercel.app/DisneyPlus">
-Disney Plus
-</a>
-<p></p>
-<a href="https://streamer-liard.vercel.app/ParamountPlus">
-Paramount Plus
-</a>
-<p></p>
-<a href="https://streamer-liard.vercel.app/Max">
-Max
-</a>
-<p></p>
-<a href="https://streamer-liard.vercel.app/Clarovideo">
-Claro video
-</a>
-<p></p>
-<a href="https://streamer-liard.vercel.app/GooglePlayMovies">
-Google Play Movies
-</a>
-<p></p>
-<a href="https://streamer-liard.vercel.app/MGMChannel">
-MGMChannel
-</a>
-<p></p>
-<a href="https://streamer-liard.vercel.app/Oldflix">
-Oldflix
-</a>
-<p></p>
-<a href="https://streamer-liard.vercel.app/NOW">
-NOW
-</a>
-<p></p>
-<a href="https://streamer-liard.vercel.app/Vudu">
-Vudu
-</a>
-<p></p>
-<a href="https://streamer-liard.vercel.app/AMConDemand">
-AMC on Demand
-</a>
-<p></p>
-<a href="https://streamer-liard.vercel.app/ParamountPlusAppleTVChannel">
-Paramount Plus Apple TV Channel
-</a>
-<p></p>
-<a href="https://streamer-liard.vercel.app/UniverVideo">
-Univer Video
-</a>
-<p></p>
-<a href="https://streamer-liard.vercel.app/NetflixbasicwithAds">
-Netflix basic with Ads
-</a>
-<p></p>
-<a href="https://streamer-liard.vercel.app/OiPlay">
-Oi Play
-</a>
-<p></p>
-<a href="https://streamer-liard.vercel.app/Looke">
-Looke
-</a>
-<p></p>
-<a href="https://streamer-liard.vercel.app/Filmicca">
-Filmicca
-</a>
-<p></p>
-<a href="https://streamer-liard.vercel.app/Lancamentos2024">
-Lancamentos 2024
-</a>
-<p></p>
-<a href="https://streamer-liard.vercel.app/AmazonPrime">
-Amazon Prime
-</a>
-<p></p>
-<a href="https://streamer-liard.vercel.app/AmazonPrime">
-Amazon Prime
-</a>
-<p></p>
-<a href="https://streamer-liard.vercel.app/AmazonPrime">
-Amazon Prime
-</a>
-<p></p>
-<a href="https://streamer-liard.vercel.app/AmazonPrime">
-Amazon Prime
-</a>
-<p></p>
-<a href="https://streamer-liard.vercel.app/AmazonPrime">
-Amazon Prime
-</a>
-<p></p>
-<a href="https://streamer-liard.vercel.app/AmazonPrime">
-Amazon Prime
-</a>
-<p></p>
-<a href="https://streamer-liard.vercel.app/AmazonPrime">
-Amazon Prime
-</a>
-<p></p>
-<a href="https://streamer-liard.vercel.app/AmazonPrime">
-Amazon Prime
-</a>
-<p></p>
-<a href="https://streamer-liard.vercel.app/AmazonPrime">
-Amazon Prime
-</a>
-<p></p>
-<a href="https://streamer-liard.vercel.app/AmazonPrime">
-Amazon Prime
-</a>
-<p></p>
-<a href="https://streamer-liard.vercel.app/AmazonPrime">
-Amazon Prime
-</a>
-<p></p>
-<a href="https://streamer-liard.vercel.app/AmazonPrime">
-Amazon Prime
-</a>
-<p></p>
-<a href="https://streamer-liard.vercel.app/AmazonPrime">
-Amazon Prime
-</a>
-<p></p>
-<a href="https://streamer-liard.vercel.app/AmazonPrime">
-Amazon Prime
-</a>
-<p></p>
-<a href="https://streamer-liard.vercel.app/AmazonPrime">
-Amazon Prime
-</a>
-<p></p>
-<a href="https://streamer-liard.vercel.app/AmazonPrime">
-Amazon Prime
-</a>
-<p></p>
-<a href="https://streamer-liard.vercel.app/AmazonPrime">
-Amazon Prime
-</a>
-<p></p>
-<a href="https://streamer-liard.vercel.app/AmazonPrime">
-Amazon Prime
-</a>
-<p></p>
-<a href="https://streamer-liard.vercel.app/AmazonPrime">
-Amazon Prime
-</a>
-<p></p>
-<a href="https://streamer-liard.vercel.app/AmazonPrime">
-Amazon Prime
-</a>
-<p></p>
-<a href="https://streamer-liard.vercel.app/AmazonPrime">
-Amazon Prime
-</a>
-<p></p>
-<a href="https://streamer-liard.vercel.app/AmazonPrime">
-Amazon Prime
-</a>
-<p></p>
-<a href="https://streamer-liard.vercel.app/AmazonPrime">
-Amazon Prime
-</a>
-
- </div>
-    
-
+  
+    return (
+      <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center' }}>
+        {channels.map((channel, index) => (
+          <div key={index} style={{ margin: '10px', textAlign: 'center' }}>
+            <img
+              src={channel.tvgLogo}
+              alt={channel.name}
+              onClick={() => handleImageClick(channel.name)} // Ao clicar, usa o navigate para a rota com o nome do canal
+              style={{ cursor: 'pointer', width: '150px', height: '150px', borderRadius: '10px' }}
+            />
+            <p>{channel.name}</p>
+          </div>
+        ))}
+      </div>
     );
-}
-export default Home;
+  }
+  export default Home;
