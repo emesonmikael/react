@@ -1,7 +1,4 @@
-import React, { useState } from 'react';
-import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
-import LoginPage from './LoginPage';
-import PrivateRoute from './PrivateRoute';
+;
 import ContentPage from './ContentPage';  // Página de conteúdo (rota privada)
 import SubscriberSystem from './SubscriberSystem';
 import Conteudo from './conteudo';
@@ -28,33 +25,49 @@ import M3UPlayerOiPlay from './OiPlay';
 import M3UPlayerLooke from './Looke';
 import M3UPlayerFilmicca from './Filmicca';
 import M3UPlayerLancamentos2024 from './Lancamentos2024';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import LoginPage from './LoginPage';
+import ContentPage from './ContentPage';
+import AnotherPrivatePage from './AnotherPrivatePage';  // Exemplo de outra rota privada
+import { useState } from 'react';
+import PrivateRoute from './PrivateRoute';  // Componente de rota privada
 
-
-const App = () => {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
- 
+function App() {
+  const [isRegistered, setIsRegistered] = useState(false);
 
   const handleLoginSuccess = () => {
-    setIsAuthenticated(true);
+    setIsRegistered(true);
   };
 
   return (
     <Router>
       <Routes>
-      <Route path="/s" element={<SubscriberSystem />} />
+        {/* Rota pública de login */}
         <Route path="/" element={<LoginPage onLoginSuccess={handleLoginSuccess} />} />
-        <Route 
-          path="/conteudo" 
+
+        {/* Rota privada para /content */}
+        <Route
+          path="/conteudo"
           element={
-            <PrivateRoute isAuthenticated={isAuthenticated}>
+            <PrivateRoute isRegistered={isRegistered}>
               <Conteudo />
+            </PrivateRoute>
+          }
+        />
+
+        {/* Outra rota privada */}
+        <Route
+          path="/another-private"
+          element={
+            <PrivateRoute isRegistered={isRegistered}>
+              <AnotherPrivatePage />
             </PrivateRoute>
           }
         />
         <Route
             path="/netfli"
             element={
-              <PrivateRoute isAuthenticated={isAuthenticated}>
+              <PrivateRoute isRegistered={isRegistered}>
                 <M3UPlayer />
                 </PrivateRoute>
             }
@@ -106,10 +119,14 @@ const App = () => {
         <Route path="/Looke/player/:channelName" element={<PrivateRoute><PlayerPage /></PrivateRoute>} />
         <Route path="/Filmicca/player/:channelName" element={<PrivateRoute><PlayerPage /></PrivateRoute>} />
         <Route path="/Lancamentos2024/player/:channelName" element={<PrivateRoute><PlayerPage /></PrivateRoute>} />
-        
       </Routes>
     </Router>
   );
-};
+}
 
 export default App;
+
+
+    
+        
+     
