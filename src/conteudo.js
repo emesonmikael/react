@@ -13,7 +13,7 @@ function Conteudo() {
     <div>
       <h1>Bem-vindo à página de conteúdo!</h1>
       <p>Somente usuários autenticados podem ver este conteúdo.</p>
-      <a href="http://localhost:3000/netfli">
+      <a href="https://streamer-liard.vercel.app/netfli">
       Netflix Filme  
 <p>
 
