@@ -53,9 +53,9 @@ const App = () => {
         <Route
             path="/netfli"
             element={
-              <PrivateRoute isAuthenticated={isAuthenticated}>
+              
                 <M3UPlayer />
-                </PrivateRoute>
+                
             }
           />
           <Route path="/Subscriber" element={<SubscriberSystem />} />
