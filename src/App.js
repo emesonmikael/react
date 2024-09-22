@@ -35,21 +35,7 @@ function App() {
 
 
   // Função para conectar a MetaMask
-  const connectWallet = async () => {
-    if (window.ethereum) {
-      try {
-        const accounts = await window.ethereum.request({
-          method: "eth_requestAccounts",
-        });
-        setAccount(accounts[0]); // Guardar a conta conectada
-        localStorage.setItem("walletAddress", accounts[0]); // Salvar a conta no localStorage
-      } catch (err) {
-        console.error("Erro ao conectar a carteira", err);
-      }
-    } else {
-      console.error("MetaMask não encontrada");
-    }
-  };
+
 
   // Função para desconectar a carteira
   const disconnectWallet = () => {
