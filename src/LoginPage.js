@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useWeb3React } from '@web3-react/core';
 import { injected } from './wallet/Connectors'; // Conector MetaMask
 import { ethers } from 'ethers';
-import contractABI from './contractABI.json';  // ABI do contrato
+import SubscriberManagerABI from './SubscriberManagerABI.json'; // ABI do contrato
 
 const LoginPage = ({ onLoginSuccess }) => {
   const { active, account, activate, library } = useWeb3React();
@@ -26,7 +26,7 @@ const LoginPage = ({ onLoginSuccess }) => {
     setLoading(true);
     try {
       const signer = library.getSigner();
-      const contract = new ethers.Contract(contractAddress, contractABI, signer);
+      const contract = new ethers.Contract(contractAddress, SubscriberManagerABI, signer);
       const subscriberInfo = await contract.subscribers(account);
 
       if (subscriberInfo.isRegistered) {
