@@ -6,6 +6,9 @@ import PlayerPage from './PlayerPage';
 
 function Conteudo() {
   const navigate = useNavigate();
+  function netfli(){
+    <navigate to="/netfli" />;
+  }
   
 
   
@@ -13,6 +16,7 @@ function Conteudo() {
     <div>
       <h1>Bem-vindo à página de conteúdo!</h1>
       <p>Somente usuários autenticados podem ver este conteúdo.</p>
+      <button onClick={netfli}>Netflix</button>
       <a href="https://streamer-liard.vercel.app/netfli">
       Netflix Filme  
 <p>
@@ -26,7 +30,7 @@ HBO Max
 <p>
 
 </p>
-<a href="http://localhost:3000/Globo">
+<a href="https://streamer-liard.vercel.app/Globo">
 Globoplay
 </a>
 <p></p>
