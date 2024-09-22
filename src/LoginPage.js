@@ -43,7 +43,7 @@ const LoginPage = ({ connectWallet }) => {
        else 
       {alert('regitre para ter acesso aos onteudos');}
     }
-    await connectWallet2();
+    //await connectWallet2();
   
     
    
