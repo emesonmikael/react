@@ -1,13 +1,13 @@
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom'; // Para redirecionamento
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import M3UPlayer from "./M3UPlayer2";
 import PlayerPage from './PlayerPage';
 
 function Conteudo() {
   const navigate = useNavigate();
   function netfli(){
-    navigate("/netfli" );
+    navigate('/netfli');
   }
   
 
