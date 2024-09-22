@@ -42,7 +42,7 @@ const LoginPage = ({ onLoginSuccess }) => {
 
       if (subscriberInfo.isRegistered) {
         setIsRegistered(true);
-        onLoginSuccess();
+       // onLoginSuccess();
         navigate("/Conteudo") ;
       } else {
         setError('Usuário não registrado.');
