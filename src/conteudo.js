@@ -7,7 +7,7 @@ import PlayerPage from './PlayerPage';
 function Conteudo() {
   const navigate = useNavigate();
   function netfli(){
-    <navigate to="/netfli" />;
+    navigate("/netfli" );
   }
   
 
