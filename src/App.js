@@ -63,9 +63,9 @@ function App() {
         <Route
           path="/netfli"
           element={
-            
+            <PrivateRoute isRegistered={isRegistered}>
               <M3UPlayer />
-              
+              </PrivateRoute>
           }
         />
          <Route path="/Globo" element={<M3UPlayerGloboplay />} />
