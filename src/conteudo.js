@@ -5,23 +5,15 @@ import M3UPlayer from "./M3UPlayer2";
 import PlayerPage from './PlayerPage';
 
 function Conteudo() {
- /**  const navigate = useNavigate();
+  const navigate = useNavigate();
+  
 
-  useEffect(() => {
-    // Verificar se o usuário está logado
-    const loggedInUser = localStorage.getItem('loggedInUser');
-    
-    if (!loggedInUser) {
-      // Se o usuário não está logado, redirecionar para a página de login
-      navigate('/login');
-    }
-  }, [navigate]);
-*/
+  
   return (
     <div>
       <h1>Bem-vindo à página de conteúdo!</h1>
       <p>Somente usuários autenticados podem ver este conteúdo.</p>
-      <a href="https://streamer-liard.vercel.app/netfli">
+      <a href="http://localhost:3000/netfli">
       Netflix Filme  
 <p>
 
@@ -34,7 +26,7 @@ HBO Max
 <p>
 
 </p>
-<a href="https://streamer-liard.vercel.app/Globo">
+<a href="http://localhost:3000/Globo">
 Globoplay
 </a>
 <p></p>
