@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import LoginPage from './LoginPage';
-//import PrivateRoute from './PrivateRoute';
+import PrivateRoute from './PrivateRoute';
 import ContentPage from './ContentPage';  // Página de conteúdo (rota privada)
 import SubscriberSystem from './SubscriberSystem';
 import Conteudo from './conteudo';
@@ -32,9 +32,7 @@ import M3UPlayerLancamentos2024 from './Lancamentos2024';
 
 const App = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const PrivateRoute = ({ children ,isAuthenticated}) => {
-    return isAuthenticated ? children : <Navigate to="/" />;
-  };
+ 
 
   const handleLoginSuccess = () => {
     setIsAuthenticated(true);
