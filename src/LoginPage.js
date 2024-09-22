@@ -43,7 +43,7 @@ const LoginPage = ({ onLoginSuccess }) => {
       if (subscriberInfo.isRegistered) {
         setIsRegistered(true);
         onLoginSuccess();  // Chama a função de sucesso de login
-        navigate('/conteudo');  // Navega para a página /content
+        navigate('/Home');  // Navega para a página /content
       } else {
         setError('Usuário não registrado.');
       }

@@ -2,20 +2,34 @@ import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Route, Routes, useNavigate } from 'react-router-dom';
 import M3UPlayer from './M3UPlayer';
 import PlayerPage from './PlayerPage';
+import LoginPage from './LoginPage';
+import PrivateRoute from './PrivateRoute';  // Componente de rota privada
 
 function App() {
+  const [isRegistered, setIsRegistered] = useState(false);
+
+  const handleLoginSuccess = () => {
+    setIsRegistered(true);
+    localStorage.setItem('isRegistered', 'true');  // Salva no localStorage
+  };
+  useEffect(() => {
+    const registered = localStorage.getItem('isRegistered') === 'true';
+    setIsRegistered(registered);  // Restaura o estado de login do localStorage
+  }, []);
+
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/Home" element={ <PrivateRoute isRegistered={isRegistered}><Home /></PrivateRoute>} />
+        <Route path="/" element={<LoginPage onLoginSuccess={handleLoginSuccess} />} />
         {/* Crie rotas dinâmicas baseadas no nome do canal */}
         
         <Route
             path="/Netflix"
             element={
-              
+              <PrivateRoute isRegistered={isRegistered}>
                 <M3UPlayer />
-              
+                </PrivateRoute>
             }
           />
         <Route path="/DiscoveryPlus" element={<ChannelPage name="Discovery Plus" />} />
