@@ -8,21 +8,7 @@ const LoginPage = ({ connectWallet }) => {
   const navigate = useNavigate();
   //const [account, setAccount] = useState(null);
 
-  const connectWallet2 = async () => {
-    if (window.ethereum) {
-      try {
-        const accounts = await window.ethereum.request({
-          method: "eth_requestAccounts",
-        });
-       // setAccount(accounts[0]); // Guardar a conta conectada
-        localStorage.setItem("walletAddress", accounts[0]); // Salvar a conta no localStorage
-      } catch (err) {
-        console.error("Erro ao conectar a carteira", err);
-      }
-    } else {
-      console.error("MetaMask não encontrada");
-    }
-  };
+ 
   
 
   const handleLogin = async () => {
@@ -43,7 +29,7 @@ const LoginPage = ({ connectWallet }) => {
        else 
       {alert('regitre para ter acesso aos onteudos');}
     }
-    //await connectWallet2();
+    //await connectWallet();
   
     
    
