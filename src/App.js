@@ -32,7 +32,7 @@ import M3UPlayerLancamentos2024 from './Lancamentos2024';
 
 const App = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const PrivateRoute = ({ children }) => {
+  const PrivateRoute = ({ children ,isAuthenticated}) => {
     return isAuthenticated ? children : <Navigate to="/" />;
   };
 
