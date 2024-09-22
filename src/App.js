@@ -33,7 +33,7 @@ import M3UPlayerLancamentos2024 from './Lancamentos2024';
 const App = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const PrivateRoute = ({ children }) => {
-    return account ? children : <Navigate to="/login" />;
+    return isAuthenticated ? children : <Navigate to="/" />;
   };
 
   const handleLoginSuccess = () => {
