@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Route, Routes, useNavigate } from 'react-router-dom';
+import M3UPlayer from './M3UPlayer';
+import PlayerPage from './PlayerPage';
 
 function App() {
   return (
@@ -7,9 +9,18 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         {/* Crie rotas dinâmicas baseadas no nome do canal */}
-        <Route path="/Netflix" element={<ChannelPage name="Netflix" />} />
+        
+        <Route
+            path="/Netflix"
+            element={
+              
+                <M3UPlayer />
+              
+            }
+          />
         <Route path="/DiscoveryPlus" element={<ChannelPage name="Discovery Plus" />} />
         <Route path="/Globoplay" element={<ChannelPage name="Globoplay" />} />
+        <Route path="/Netflix/player/:channelName" element={<PlayerPage />} />
         {/* Adicione mais rotas conforme necessário */}
       </Routes>
     </Router>
@@ -22,7 +33,7 @@ function Home() {
 
   useEffect(() => {
     // Carrega e processa o arquivo .m3u
-    fetch('/lista.m3u') // Certifique-se de que o arquivo .m3u está na pasta public
+    fetch('/listaFilmes.m3u') // Certifique-se de que o arquivo .m3u está na pasta public
       .then(response => response.text())
       .then(data => {
         const lines = data.split('\n');
