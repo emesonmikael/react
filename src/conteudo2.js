@@ -56,7 +56,8 @@ function App() {
           />
         <Route path="/OiPlay" element={<PrivateRoute isRegistered={isRegistered}><M3UPlayerOiPlay /></PrivateRoute>} />
         <Route path="/Subscriber" element={<SubscriberSystem />} />
-        <Route path="/HBOMax" element={<M3UPlayerHbo />} /><Route path="/Globo" element={<M3UPlayerGloboplay />} />
+        <Route path="/HBOMax" element={<M3UPlayerHbo />} />
+        <Route path="/Globoplay" element={<M3UPlayerGloboplay />} />
         <Route path="/DisneyPlus" element={<M3UPlayerDisneyPlus />} />
         <Route path="/AmazonPrimeVideo" element={<M3UPlayerAmazonPrime />} />
         <Route path="/ParamountPlus" element={<M3UPlayerParamountPlus />} />
