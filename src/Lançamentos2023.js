@@ -113,4 +113,4 @@ const M3UPlayerLançamentos2023 = () => {
   );
 };
 
-export default Lançamentos2023;
+export default M3UPlayerLançamentos2023;

@@ -25,6 +25,7 @@ import M3UPlayerLooke from './Looke';
 import M3UPlayerFilmicca from './Filmicca';
 import M3UPlayerLancamentos2024 from './Lancamentos2024';
 import SubscriberSystem from './SubscriberSystem';
+import M3UPlayerLançamentos2023 from './Lançamentos2023';
 
 
 function App() {
@@ -76,6 +77,8 @@ function App() {
         <Route path="/Looke" element={<M3UPlayerLooke />} />
         <Route path="/Filmicca" element={<M3UPlayerFilmicca />} />
         <Route path="/Lancamentos2024" element={<M3UPlayerLancamentos2024 />} />
+        <Route path="/Lançamentos2023" element={<PrivateRoute isRegistered={isRegistered}><M3UPlayerLançamentos2023 /></PrivateRoute>} />
+        <Route path="/Lançamentos2023/player/:channelName" element={<PrivateRoute isRegistered={isRegistered}><PlayerPage /></PrivateRoute>} />
         <Route path="/netfli/player/:channelName" element={<PlayerPage />} />
         <Route path="/Hbo/player/:channelName" element={<PlayerPage />} />
         <Route path="/Globo/player/:channelName" element={<PlayerPage />} />
