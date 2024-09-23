@@ -79,6 +79,8 @@ function App() {
         <Route path="/Lancamentos2024" element={<M3UPlayerLancamentos2024 />} />
         <Route path="/Lançamentos2023" element={<PrivateRoute isRegistered={isRegistered}><M3UPlayerLançamentos2023 /></PrivateRoute>} />
         <Route path="/Lançamentos2023/player/:channelName" element={<PrivateRoute isRegistered={isRegistered}><PlayerPage /></PrivateRoute>} />
+        <Route path="/Lançamentos2023/player/:channelName" element={<PrivateRoute isRegistered={isRegistered}><PlayerPage /></PrivateRoute>} />
+        <Route path="/Lançamentos2023/player/:channelName" element={<PrivateRoute isRegistered={isRegistered}><PlayerPage /></PrivateRoute>} />
         <Route path="/netfli/player/:channelName" element={<PlayerPage />} />
         <Route path="/Hbo/player/:channelName" element={<PlayerPage />} />
         <Route path="/Globo/player/:channelName" element={<PlayerPage />} />
