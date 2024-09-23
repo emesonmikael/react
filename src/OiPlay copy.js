@@ -68,9 +68,7 @@ const M3UPlayerOiPlay = () => {
     saveAs(blob, 'channels.json');
   };
 
-  const openInNewTab = (url) => {
-    window.open(url, '_blank');
-  };
+ 
 
   return (
     <div>
@@ -111,9 +109,7 @@ const M3UPlayerOiPlay = () => {
         <div className="player-wrapper" style={{ marginTop: '20px' }}>
           <h3>{selectedChannel.name}</h3>
           <ReactPlayer url={selectedChannel.url} controls width="100%" height="100%" />
-          <button onClick={() => openInNewTab(selectedChannel.url)} style={{ marginTop: '10px' }}>
-            Abrir em outro navegador
-          </button>
+          
         </div>
       )}
     </div>
