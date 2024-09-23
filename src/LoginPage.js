@@ -13,6 +13,9 @@ const LoginPage = ({ onLoginSuccess }) => {
   const navigate = useNavigate();
   const contractAddress = '0x2EF17eE49CC5205A2B6f3672dABEbadEDDCcDeD5';  // Endereço do contrato
 
+  function registrar(){
+    navigate('/Subscriber?ref=0x842249350ec82e6347fee77cb29ece9131dd828b');
+  }
   // Conectar MetaMask diretamente usando ethers.js
   const connectWallet = async () => {
     if (window.ethereum) {
@@ -64,8 +67,13 @@ const LoginPage = ({ onLoginSuccess }) => {
   return (
     <div>
       <h2>Login</h2>
+      <button onClick={registrar}>Conectar Carteira</button>
+      <button onClick={registrar} style={{ marginTop: '10px' }}>
+            Abrir em outro navegador
+          </button>
       {!account ? (
         <button onClick={connectWallet}>Conectar Carteira</button>
+        
       ) : loading ? (
         <p>Verificando registro...</p>
       ) : isRegistered ? (
