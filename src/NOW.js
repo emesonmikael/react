@@ -1,12 +1,7 @@
 import React, { useState, useEffect } from 'react';
-//import ReactPlayer from 'react-player';
-//import { saveAs } from 'file-saver';
-//import { useNavigate } from 'react-router-dom';
-//import React, { useState, useEffect } from 'react';
-import { ethers } from 'ethers';
-import { WalletConnectConnector } from '@web3-react/walletconnect-connector';
-import { Await } from 'react-router-dom';
-import Web3Modal from 'web3modal';
+import ReactPlayer from 'react-player';
+import { saveAs } from 'file-saver';
+import { useNavigate } from 'react-router-dom';
 
 const M3UPlayerNOW = () => {
   
