@@ -4,6 +4,26 @@ import M3UPlayer from './M3UPlayer';
 import PlayerPage from './PlayerPage';
 import LoginPage from './LoginPage';
 import PrivateRoute from './PrivateRoute';  // Componente de rota privada
+import M3UPlayerHbo from './M3UPlayer copy';
+import M3UPlayerGloboplay from './Globoplay';
+import M3UPlayerAmazonPrime from './ amazon';
+import M3UPlayerDisneyPlus from './DisneyPlus';
+import M3UPlayerParamountPlus from './ParamountPlus';
+import M3UPlayerMax from './Max';
+import M3UPlayerClarovideo from './Clarovideo';
+import M3UPlayerGooglePlayMovies from './GooglePlayMovies';
+import M3UPlayerMGMChannel from './MGMChannel';
+import M3UPlayerOldflix from './Oldflix';
+import M3UPlayerNOW from './NOW';
+import M3UPlayerVudu from './Vudu';
+import M3UPlayerAMConDemand from './AMConDemand';
+import M3UPlayerParamountPlusAppleTVChannel from './ParamountPlusAppleTVChannel';
+import M3UPlayerUniverVideo from './UniverVideo';
+import M3UPlayerNetflixbasicwithAds from './NetflixbasicwithAds';
+import M3UPlayerOiPlay from './OiPlay';
+import M3UPlayerLooke from './Looke';
+import M3UPlayerFilmicca from './Filmicca';
+import M3UPlayerLancamentos2024 from './Lancamentos2024';
 
 function App() {
   const [isRegistered, setIsRegistered] = useState(false);
@@ -32,9 +52,9 @@ function App() {
                 </PrivateRoute>
             }
           />
-        <Route path="/DiscoveryPlus" element={<ChannelPage name="Discovery Plus" />} />
-        <Route path="/Globoplay" element={<ChannelPage name="Globoplay" />} />
+        <Route path="/OiPlay" element={<M3UPlayerOiPlay />} />
         <Route path="/Netflix/player/:channelName" element={<PlayerPage />} />
+        <Route path="/OiPlay/player/:channelName" element={<PlayerPage />} />
         {/* Adicione mais rotas conforme necessário */}
       </Routes>
     </Router>

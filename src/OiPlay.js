@@ -4,6 +4,7 @@ import { ethers } from 'ethers';
 import { WalletConnectConnector } from '@web3-react/walletconnect-connector';
 import { Await } from 'react-router-dom';
 import Web3Modal from 'web3modal';
+import { useNavigate } from 'react-router-dom';
 //import { createWeb3Modal } from '@web3modal/wagmi/react'
 //import WalletConnectProvider from '@walletconnect/web3-provider';
 
@@ -15,42 +16,10 @@ const M3UPlayerOiPlay = () => {
   const [channels, setChannels] = useState([]);
   const [selectedChannel, setSelectedChannel] = useState(null);
   const [walletAddress, setWalletAddress] = useState(null);
+  const navigate = useNavigate();
 
   // Função para conectar a carteira usando MetaMask ou WalletConnect
-  const connectWallet = async () => {
-    try {
-      let provider;
-      // Configurando WalletConnect com o Infura
-
-
-      // Tenta usar MetaMask primeiro
-      if (window.ethereum) {
-        provider = new ethers.providers.Web3Provider(window.ethereum);
-        await provider.send("eth_requestAccounts", []); // Solicita ao usuário que conecte a carteira
-      } else {
-        // Se não houver MetaMask, tenta conectar com WalletConnect
-        //const YOUR_INFURA_PROJECT_ID = '4f2cf2bc50c8496bb379695691632d3d'; // Coloque o seu Project ID aqui
-       
   
-        //const instance = await web3Modal.connect();
-        //const web3Provider = new ethers.providers.Web3Provider(instance);
-       // setProvider(web3Provider);
-  
-       // const signer = web3Provider.getSigner();
-       // const address = await signer.getAddress();
-        //setWalletAddress(address);
-
-       // provider = new ethers.providers.Web3Provider(await walletConnect.getProvider());
-      }
-
-      const signer = provider.getSigner();
-      const address = await signer.getAddress();
-      setWalletAddress(address); // Define o endereço da carteira conectada
-    } catch (error) {
-      console.error("Erro ao conectar a carteira:", error);
-      alert("Não foi possível conectar a carteira. Verifique se você possui uma carteira instalada.");
-    }
-  };
 
   const processM3U = (m3uContent) => {
     const lines = m3uContent.split('\n');
@@ -91,18 +60,13 @@ const M3UPlayerOiPlay = () => {
 
   const handleChannelSelect = (channel) => {
     setSelectedChannel(channel);
-    window.open(channel.url, '_blank'); // Abre o vídeo em uma nova aba do navegador padrão
+    navigate(`player/${encodeURIComponent(channel.name)}?url=${encodeURIComponent(channel.url)}`);
+    //window.open(channel.url, '_blank'); // Abre o vídeo em uma nova aba do navegador padrão
   };
 
   return (
     <div>
-      {!walletAddress ? (
-        <button onClick={connectWallet}>Conectar com a Carteira</button>
-      ) : (
-        <>
-          <h2>M3U Player - Conectado: {walletAddress}</h2>
-
-          {channels.length > 0 && (
+      {channels.length > 0 && (
             <>
               <div>
                 <h3>Select a Channel:</h3>
@@ -142,8 +106,6 @@ const M3UPlayerOiPlay = () => {
               />
             </div>
           )}
-        </>
-      )}
     </div>
   );
 };
