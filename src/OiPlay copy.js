@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import ReactPlayer from 'react-player';
+import { saveAs } from 'file-saver';
 import { useNavigate } from 'react-router-dom';
 
 const M3UPlayerOiPlay = () => {
@@ -6,6 +8,7 @@ const M3UPlayerOiPlay = () => {
   const [selectedChannel, setSelectedChannel] = useState(null);
   const navigate = useNavigate();
 
+  // Função para processar o conteúdo do arquivo M3U e extrair links e metadados
   const processM3U = (m3uContent) => {
     const lines = m3uContent.split('\n');
     const parsedChannels = [];
@@ -20,7 +23,7 @@ const M3UPlayerOiPlay = () => {
         parsedChannels.push({
           name: nameMatch ? nameMatch[1] : 'Unknown',
           logo: logoMatch ? logoMatch[1] : null,
-          url: streamUrl.trim(),
+          url: streamUrl,
         });
       }
     }
@@ -28,11 +31,11 @@ const M3UPlayerOiPlay = () => {
     setChannels(parsedChannels);
   };
 
+  // Função para carregar o arquivo M3U automaticamente da pasta pública
   useEffect(() => {
-    // Carrega o arquivo M3U automaticamente do projeto
     const loadM3UFile = async () => {
       try {
-        const response = await fetch('/OiPlay.m3u'); // Altere o caminho conforme necessário
+        const response = await fetch('/listaNetfli.m3u'); // Substitua 'playlist.m3u' pelo nome do seu arquivo
         const content = await response.text();
         processM3U(content);
       } catch (error) {
@@ -43,30 +46,36 @@ const M3UPlayerOiPlay = () => {
     loadM3UFile();
   }, []);
 
-  const handleChannelSelect = (channel) => {
-    // Usando o proxy para evitar problemas com links HTTP
-    const proxiedUrl = `http://localhost:3001/proxy?url=${encodeURIComponent(channel.url)}`;
+  // Função para verificar se o URL é de um tipo de mídia suportado pelo ReactPlayer
+  const isSupportedMedia = (url) => {
+    const supportedFormats = ['mp4', 'webm', 'ogg', 'm3u8', 'mp3', 'wav', 'flac'];
+    const fileExtension = url.split('.').pop().toLowerCase();
+    return supportedFormats.includes(fileExtension) || ReactPlayer.canPlay(url);
+  };
 
-    setSelectedChannel({
-      ...channel,
-      url: proxiedUrl, // Substituímos o URL original pelo URL do proxy
-    });
+  const handleChannelSelect = (channel) => {
+    if (isSupportedMedia(channel.url)) {
+      setSelectedChannel(channel);
+      // Navega para a página do player passando o nome do canal na URL
+      navigate(`player/${encodeURIComponent(channel.name)}?url=${encodeURIComponent(channel.url)}`);
+    } else {
+      alert('Formato de mídia não suportado. Selecione outro canal.');
+    }
+  };
+
+  const handleSaveToFile = () => {
+    const blob = new Blob([JSON.stringify(channels, null, 2)], { type: 'application/json' });
+    saveAs(blob, 'channels.json');
+  };
+
+  const openInNewTab = (url) => {
+    window.open(url, '_blank');
   };
 
   return (
     <div>
-      {selectedChannel && (
-        <div className="player-wrapper" style={{ marginTop: '20px' }}>
-          <h3>{selectedChannel.name}</h3>
-          <video
-            src={selectedChannel.url}
-            controls
-            width="100%"
-            height="100%"
-            onError={() => alert('Erro ao carregar o vídeo. Tente abrir em outro navegador.')}
-          />
-        </div>
-      )}
+      <h2>M3U Player</h2>
+
       {channels.length > 0 && (
         <>
           <div>
@@ -92,7 +101,20 @@ const M3UPlayerOiPlay = () => {
               ))}
             </div>
           </div>
+          <button onClick={handleSaveToFile} style={{ marginTop: '20px' }}>
+            Save Channels to File
+          </button>
         </>
+      )}
+
+      {selectedChannel && (
+        <div className="player-wrapper" style={{ marginTop: '20px' }}>
+          <h3>{selectedChannel.name}</h3>
+          <ReactPlayer url={selectedChannel.url} controls width="100%" height="100%" />
+          <button onClick={() => openInNewTab(selectedChannel.url)} style={{ marginTop: '10px' }}>
+            Abrir em outro navegador
+          </button>
+        </div>
       )}
     </div>
   );
