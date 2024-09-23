@@ -24,6 +24,8 @@ import M3UPlayerOiPlay from './OiPlay';
 import M3UPlayerLooke from './Looke';
 import M3UPlayerFilmicca from './Filmicca';
 import M3UPlayerLancamentos2024 from './Lancamentos2024';
+import SubscriberSystem from './SubscriberSystem';
+
 
 function App() {
   const [isRegistered, setIsRegistered] = useState(false);
@@ -53,6 +55,8 @@ function App() {
             }
           />
         <Route path="/OiPlay" element={<M3UPlayerOiPlay />} />
+        <Route path="/Subscriber" element={<SubscriberSystem />} />
+        
         <Route path="/Netflix/player/:channelName" element={<PlayerPage />} />
         <Route path="/OiPlay/player/:channelName" element={<PlayerPage />} />
         {/* Adicione mais rotas conforme necessário */}
