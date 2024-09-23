@@ -67,10 +67,8 @@ const LoginPage = ({ onLoginSuccess }) => {
   return (
     <div>
       <h2>Login</h2>
-      <button onClick={registrar}>Conectar Carteira</button>
-      <button onClick={registrar} style={{ marginTop: '10px' }}>
-            Abrir em outro navegador
-          </button>
+      <button onClick={registrar}>Registrar</button>
+      
       {!account ? (
         <button onClick={connectWallet}>Conectar Carteira</button>
         
