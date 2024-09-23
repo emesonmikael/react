@@ -58,7 +58,7 @@ function App() {
         <Route path="/Subscriber" element={<SubscriberSystem />} />
         <Route path="/Hbo" element={<M3UPlayerHbo />} /><Route path="/Globo" element={<M3UPlayerGloboplay />} />
         <Route path="/DisneyPlus" element={<M3UPlayerDisneyPlus />} />
-        <Route path="/AmazonPrime" element={<M3UPlayerAmazonPrime />} />
+        <Route path="/AmazonPrimeVideo" element={<M3UPlayerAmazonPrime />} />
         <Route path="/ParamountPlus" element={<M3UPlayerParamountPlus />} />
         <Route path="/Max" element={<M3UPlayerMax />} />
         <Route path="/Clarovideo" element={<M3UPlayerClarovideo />} />
