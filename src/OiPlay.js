@@ -66,6 +66,18 @@ const M3UPlayerOiPlay = () => {
 
   return (
     <div>
+        {selectedChannel && (
+            <div className="player-wrapper" style={{ marginTop: '20px' }}>
+              <h3>{selectedChannel.name}</h3>
+              <video
+                src={selectedChannel.url}
+                controls
+                width="100%"
+                height="100%"
+                onError={() => alert('Erro ao carregar o vídeo. Tente abrir em outro navegador.')}
+              />
+            </div>
+          )}
       {channels.length > 0 && (
             <>
               <div>
@@ -94,18 +106,7 @@ const M3UPlayerOiPlay = () => {
             </>
           )}
 
-          {selectedChannel && (
-            <div className="player-wrapper" style={{ marginTop: '20px' }}>
-              <h3>{selectedChannel.name}</h3>
-              <video
-                src={selectedChannel.url}
-                controls
-                width="100%"
-                height="100%"
-                onError={() => alert('Erro ao carregar o vídeo. Tente abrir em outro navegador.')}
-              />
-            </div>
-          )}
+        
     </div>
   );
 };
