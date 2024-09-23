@@ -20,7 +20,7 @@ import M3UPlayerAMConDemand from './AMConDemand';
 import M3UPlayerParamountPlusAppleTVChannel from './ParamountPlusAppleTVChannel';
 import M3UPlayerUniverVideo from './UniverVideo';
 import M3UPlayerNetflixbasicwithAds from './NetflixbasicwithAds';
-import M3UPlayerOiPlay from './OiPlay copy';
+import M3UPlayerOiPlay from './OiPlay';
 import M3UPlayerLooke from './Looke';
 import M3UPlayerFilmicca from './Filmicca';
 import M3UPlayerLancamentos2024 from './Lancamentos2024';
