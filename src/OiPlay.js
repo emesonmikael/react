@@ -61,7 +61,7 @@ const M3UPlayerOiPlay = () => {
   const handleChannelSelect = (channel) => {
     setSelectedChannel(channel);
    // navigate(`player/${encodeURIComponent(channel.name)}?url=${encodeURIComponent(channel.url)}`);
-    //window.open(channel.url, '_blank'); // Abre o vídeo em uma nova aba do navegador padrão
+    window.open(channel.url, '_blank'); // Abre o vídeo em uma nova aba do navegador padrão
   };
 
   return (
