@@ -34,6 +34,7 @@ import M3UPlayerFantasiaeFicção from './FantasiaeFicção';
 import M3UPlayerDrama from './Drama';
 import M3UPlayerComédia from './Comédia';
 import M3UPlayerAnimes from './Animes';
+import M3UPlayerInfantil from './Infantil';
 
 
 function App() {
@@ -94,7 +95,7 @@ function App() {
         <Route path="/Drama" element={<PrivateRoute isRegistered={isRegistered}><M3UPlayerDrama /></PrivateRoute>} />
         <Route path="/Comédia" element={<PrivateRoute isRegistered={isRegistered}><M3UPlayerComédia /></PrivateRoute>} />
         <Route path="/Animes" element={<PrivateRoute isRegistered={isRegistered}><M3UPlayerAnimes /></PrivateRoute>} />
-        <Route path="/Terror" element={<PrivateRoute isRegistered={isRegistered}><M3UPlayerTerror /></PrivateRoute>} />
+        <Route path="/Infantil" element={<PrivateRoute isRegistered={isRegistered}><M3UPlayerInfantil /></PrivateRoute>} />
         <Route path="/Terror" element={<PrivateRoute isRegistered={isRegistered}><M3UPlayerTerror /></PrivateRoute>} />
         
         <Route path="/Marvel/player/:channelName" element={<PrivateRoute isRegistered={isRegistered}><PlayerPage /></PrivateRoute>} />
@@ -105,7 +106,7 @@ function App() {
         <Route path="/Drama/player/:channelName" element={<PrivateRoute isRegistered={isRegistered}><PlayerPage /></PrivateRoute>} />
         <Route path="/Comédia/player/:channelName" element={<PrivateRoute isRegistered={isRegistered}><PlayerPage /></PrivateRoute>} />
         <Route path="/Animes/player/:channelName" element={<PrivateRoute isRegistered={isRegistered}><PlayerPage /></PrivateRoute>} />
-        <Route path="/Terror/player/:channelName" element={<PrivateRoute isRegistered={isRegistered}><PlayerPage /></PrivateRoute>} />
+        <Route path="/Infantil/player/:channelName" element={<PrivateRoute isRegistered={isRegistered}><PlayerPage /></PrivateRoute>} />
         <Route path="/Terror/player/:channelName" element={<PrivateRoute isRegistered={isRegistered}><PlayerPage /></PrivateRoute>} />
         
         <Route path="/netfli/player/:channelName" element={<PlayerPage />} />
