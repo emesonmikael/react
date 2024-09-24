@@ -32,6 +32,7 @@ import M3UPlayerFaroeste from './Faroeste';
 import M3UPlayerTerror from './Terror';
 import M3UPlayerFantasiaeFicção from './FantasiaeFicção';
 import M3UPlayerDrama from './Drama';
+import M3UPlayerComédia from './Comédia';
 
 
 function App() {
@@ -90,7 +91,7 @@ function App() {
         <Route path="/Lançamentos2023" element={<PrivateRoute isRegistered={isRegistered}><M3UPlayerLançamentos2023 /></PrivateRoute>} />
         <Route path="/FantasiaeFicção" element={<PrivateRoute isRegistered={isRegistered}><M3UPlayerFantasiaeFicção /></PrivateRoute>} />
         <Route path="/Drama" element={<PrivateRoute isRegistered={isRegistered}><M3UPlayerDrama /></PrivateRoute>} />
-        <Route path="/Terror" element={<PrivateRoute isRegistered={isRegistered}><M3UPlayerTerror /></PrivateRoute>} />
+        <Route path="/Comédia" element={<PrivateRoute isRegistered={isRegistered}><M3UPlayerComédia /></PrivateRoute>} />
         <Route path="/Terror" element={<PrivateRoute isRegistered={isRegistered}><M3UPlayerTerror /></PrivateRoute>} />
         <Route path="/Terror" element={<PrivateRoute isRegistered={isRegistered}><M3UPlayerTerror /></PrivateRoute>} />
         <Route path="/Terror" element={<PrivateRoute isRegistered={isRegistered}><M3UPlayerTerror /></PrivateRoute>} />
@@ -101,7 +102,7 @@ function App() {
         <Route path="/Terror/player/:channelName" element={<PrivateRoute isRegistered={isRegistered}><PlayerPage /></PrivateRoute>} />
         <Route path="/FantasiaeFicção/player/:channelName" element={<PrivateRoute isRegistered={isRegistered}><PlayerPage /></PrivateRoute>} />
         <Route path="/Drama/player/:channelName" element={<PrivateRoute isRegistered={isRegistered}><PlayerPage /></PrivateRoute>} />
-        <Route path="/Terror/player/:channelName" element={<PrivateRoute isRegistered={isRegistered}><PlayerPage /></PrivateRoute>} />
+        <Route path="/Comédia/player/:channelName" element={<PrivateRoute isRegistered={isRegistered}><PlayerPage /></PrivateRoute>} />
         <Route path="/Terror/player/:channelName" element={<PrivateRoute isRegistered={isRegistered}><PlayerPage /></PrivateRoute>} />
         <Route path="/Terror/player/:channelName" element={<PrivateRoute isRegistered={isRegistered}><PlayerPage /></PrivateRoute>} />
         <Route path="/Terror/player/:channelName" element={<PrivateRoute isRegistered={isRegistered}><PlayerPage /></PrivateRoute>} />
