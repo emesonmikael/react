@@ -3,7 +3,7 @@ import ReactPlayer from 'react-player';
 import { saveAs } from 'file-saver';
 import { useNavigate } from 'react-router-dom';
 
-const M3UPlayerDisneyPlus = () => {
+const M3UPlayerAção = () => {
   const [channels, setChannels] = useState([]);
   const [selectedChannel, setSelectedChannel] = useState(null);
   const navigate = useNavigate();
@@ -35,7 +35,7 @@ const M3UPlayerDisneyPlus = () => {
   useEffect(() => {
     const loadM3UFile = async () => {
       try {
-        const response = await fetch('/DisneyPlus.m3u'); // Substitua 'playlist.m3u' pelo nome do seu arquivo
+        const response = await fetch('/Ação.m3u'); // Substitua 'playlist.m3u' pelo nome do seu arquivo
         const content = await response.text();
         processM3U(content);
       } catch (error) {
@@ -113,4 +113,4 @@ const M3UPlayerDisneyPlus = () => {
   );
 };
 
-export default M3UPlayerDisneyPlus;
+export default M3UPlayerAção;
