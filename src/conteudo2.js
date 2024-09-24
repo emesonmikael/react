@@ -36,6 +36,8 @@ import M3UPlayerComédia from './Comédia';
 import M3UPlayerAnimes from './Animes';
 import M3UPlayerInfantil from './Infantil';
 import M3UPlayerAção from './Ação';
+import M3UPlayerNacionais from './Nacionais';
+import M3UPlayerRomance from './Romance';
 
 
 function App() {
@@ -98,8 +100,8 @@ function App() {
         <Route path="/Animes" element={<PrivateRoute isRegistered={isRegistered}><M3UPlayerAnimes /></PrivateRoute>} />
         <Route path="/Infantil" element={<PrivateRoute isRegistered={isRegistered}><M3UPlayerInfantil /></PrivateRoute>} />
         <Route path="/Ação" element={<PrivateRoute isRegistered={isRegistered}><M3UPlayerAção /></PrivateRoute>} />
-        <Route path="/Terror" element={<PrivateRoute isRegistered={isRegistered}><M3UPlayerTerror /></PrivateRoute>} />
-        <Route path="/Terror" element={<PrivateRoute isRegistered={isRegistered}><M3UPlayerTerror /></PrivateRoute>} />
+        <Route path="/Nacionais" element={<PrivateRoute isRegistered={isRegistered}><M3UPlayerNacionais /></PrivateRoute>} />
+        <Route path="/Romance" element={<PrivateRoute isRegistered={isRegistered}><M3UPlayerRomance /></PrivateRoute>} />
         <Route path="/Terror" element={<PrivateRoute isRegistered={isRegistered}><M3UPlayerTerror /></PrivateRoute>} />
         <Route path="/Terror" element={<PrivateRoute isRegistered={isRegistered}><M3UPlayerTerror /></PrivateRoute>} />
         <Route path="/Terror" element={<PrivateRoute isRegistered={isRegistered}><M3UPlayerTerror /></PrivateRoute>} />
@@ -114,8 +116,8 @@ function App() {
         <Route path="/Animes/player/:channelName" element={<PrivateRoute isRegistered={isRegistered}><PlayerPage /></PrivateRoute>} />
         <Route path="/Infantil/player/:channelName" element={<PrivateRoute isRegistered={isRegistered}><PlayerPage /></PrivateRoute>} />
         <Route path="/Ação/player/:channelName" element={<PrivateRoute isRegistered={isRegistered}><PlayerPage /></PrivateRoute>} />
-        <Route path="/Terror/player/:channelName" element={<PrivateRoute isRegistered={isRegistered}><PlayerPage /></PrivateRoute>} />
-        <Route path="/Terror/player/:channelName" element={<PrivateRoute isRegistered={isRegistered}><PlayerPage /></PrivateRoute>} />
+        <Route path="/Nacionais/player/:channelName" element={<PrivateRoute isRegistered={isRegistered}><PlayerPage /></PrivateRoute>} />
+        <Route path="/Romance/player/:channelName" element={<PrivateRoute isRegistered={isRegistered}><PlayerPage /></PrivateRoute>} />
         <Route path="/Terror/player/:channelName" element={<PrivateRoute isRegistered={isRegistered}><PlayerPage /></PrivateRoute>} />
         <Route path="/Terror/player/:channelName" element={<PrivateRoute isRegistered={isRegistered}><PlayerPage /></PrivateRoute>} />
         <Route path="/Terror/player/:channelName" element={<PrivateRoute isRegistered={isRegistered}><PlayerPage /></PrivateRoute>} />
