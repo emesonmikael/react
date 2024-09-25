@@ -62,8 +62,8 @@ const App = () => {
       window.open(url, '_blank');
     } else {
       // Caso seja outro M3U, atualiza o URL para carregar o novo arquivo
-      const nextUrl = url.startsWith('/') ? `${url}`: url;
-      setCurrentUrl(nextUrl);
+      const nextUrl = url.startsWith('/') ;
+      setCurrentUrl(url);
     }
   };
 
