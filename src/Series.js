@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
-// Importe o arquivo M3U como uma string
-import m3uFile from './series.m3u';
+
+// Carrega o arquivo M3U principal da pasta src
+import initialM3uFile from './series.m3u';
 
 const App = () => {
   const [items, setItems] = useState([]);
+  const [currentM3uFile, setCurrentM3uFile] = useState(initialM3uFile); // Inicializa com o arquivo principal
 
   // Função para fazer o parse do conteúdo M3U
   const parseM3U = (content) => {
@@ -22,7 +24,7 @@ const App = () => {
         const bgMatch = line.match(/#EXTBG: (.*)/);
         if (bgMatch) currentItem.background = bgMatch[1];
       } else if (line.startsWith('http') || line.startsWith('/')) {
-        currentItem.url = line.trim();  // Para evitar problemas de espaço extra
+        currentItem.url = line.trim();  // Limpa espaços extras
         items.push(currentItem);
         currentItem = {};
       }
@@ -30,30 +32,42 @@ const App = () => {
     return items;
   };
 
-  useEffect(() => {
-    // Carrega o arquivo M3U diretamente
-    fetch(m3uFile)
+  // Função para carregar o conteúdo do arquivo M3U
+  const loadM3UFile = (file) => {
+    fetch(file)
       .then((response) => response.text())
       .then((text) => {
         const parsedItems = parseM3U(text);
         setItems(parsedItems);
       })
       .catch((error) => console.error('Erro ao carregar o arquivo M3U:', error));
-  }, []);
+  };
+
+  // Carrega o arquivo M3U inicial ao montar o componente
+  useEffect(() => {
+    loadM3UFile(currentM3uFile);
+  }, [currentM3uFile]);
+
+  // Quando o usuário clicar no item, ele tentará carregar o próximo arquivo M3U ou, se for um arquivo final (por exemplo, mp4), ele abrirá o link
+  const handleClick = (itemUrl) => {
+    // Verifica se o link é outro arquivo .m3u
+    if (itemUrl.endsWith('.m3u')) {
+      setCurrentM3uFile(itemUrl); // Atualiza para carregar o novo arquivo M3U
+    } else {
+      window.open(itemUrl, '_blank'); // Se for um arquivo final, abre o conteúdo
+    }
+  };
 
   return (
     <div style={styles.container}>
       <h1>Playlist de Séries</h1>
       <div style={styles.grid}>
         {items.map((item, index) => (
-          <div key={index} style={styles.card}>
+          <div key={index} style={styles.card} onClick={() => handleClick(item.url)}>
             {item.tvgLogo && (
               <img src={item.tvgLogo} alt={item.title} style={styles.logo} />
             )}
             <h2 style={styles.title}>{item.title}</h2>
-            <a href={item.url} target="_blank" rel="noopener noreferrer">
-              Assistir
-            </a>
           </div>
         ))}
       </div>
@@ -78,6 +92,7 @@ const styles = {
     padding: '20px',
     textAlign: 'center',
     boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+    cursor: 'pointer',
   },
   logo: {
     width: '100%',
