@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 // Importe o arquivo M3U como uma string
-import m3uFile from './Series.m3u';
+import m3uFile from './series.m3u';
 
 const App = () => {
   const [items, setItems] = useState([]);
