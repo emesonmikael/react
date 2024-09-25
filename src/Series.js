@@ -43,7 +43,7 @@ const parseM3U = (content) => {
 
 const App = () => {
   const [items, setItems] = useState([]);
-  const [currentUrl, setCurrentUrl] = useState(`${window.location.origin}./series.m3u`);
+  const [currentUrl, setCurrentUrl] = useState(`${window.location.origin}/series.m3u`);
 
   // Função para carregar o arquivo M3U ao iniciar
   useEffect(() => {
