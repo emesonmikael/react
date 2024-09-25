@@ -4,7 +4,7 @@
 /NetflixSeries
 #EXTINF:0 type="playlist" tvg-logo="https://i.imgur.com/WmsgVaM.png",Series | Netflix
 #EXTBG: #11609e
-/NetfliSeries.m3u
+./NetfliSeries.m3u
 #EXTINF:0 type="playlist" tvg-logo="https://i.imgur.com/WmsgVaM.png",Series | Discovery Plus
 #EXTBG: #11609e
 http://e.fastcdn.fun/ssiptv/580493864/762284416/series/35
