@@ -63,6 +63,7 @@ const App = () => {
     } else {
       // Caso seja outro M3U, atualiza o URL para carregar o novo arquivo
       const nextUrl = url.startsWith('/') ;
+      console.log(url);
       setCurrentUrl(url);
     }
   };
