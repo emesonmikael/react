@@ -1,108 +1,96 @@
 import React, { useState, useEffect } from 'react';
+import './App.css'; // Arquivo CSS para os estilos
 
-// Carrega o arquivo M3U principal da pasta src
-import initialM3uFile from './series.m3u';
+// Função para buscar e processar o arquivo M3U
+const fetchM3U = async (url) => {
+  try {
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error(`Erro ao carregar o arquivo M3U: ${response.statusText}`);
+    }
+    const text = await response.text();
+    return parseM3U(text);
+  } catch (error) {
+    console.error('Falha ao buscar o arquivo M3U:', error);
+    return [];
+  }
+};
+
+// Função para fazer o parse do conteúdo M3U
+const parseM3U = (content) => {
+  const lines = content.split('\n');
+  let items = [];
+  let currentItem = {};
+
+  lines.forEach((line) => {
+    if (line.startsWith('#EXTINF')) {
+      const titleMatch = line.match(/,(.*)$/);
+      if (titleMatch) currentItem.title = titleMatch[1];
+
+      const logoMatch = line.match(/tvg-logo="(.*?)"/);
+      if (logoMatch) currentItem.tvgLogo = logoMatch[1];
+    } else if (line.startsWith('#EXTBG')) {
+      const bgMatch = line.match(/#EXTBG: (.*)/);
+      if (bgMatch) currentItem.background = bgMatch[1];
+    } else if (line.startsWith('http') || line.startsWith('/')) {
+      currentItem.url = line.trim();  // Para evitar problemas de espaço extra
+      items.push(currentItem);
+      currentItem = {};
+    }
+  });
+  return items;
+};
 
 const App = () => {
   const [items, setItems] = useState([]);
-  const [currentM3uFile, setCurrentM3uFile] = useState(initialM3uFile); // Inicializa com o arquivo principal
+  const [currentUrl, setCurrentUrl] = useState(`${window.location.origin}./Séries.m3u`);
 
-  // Função para fazer o parse do conteúdo M3U
-  const parseM3U = (content) => {
-    const lines = content.split('\n');
-    let items = [];
-    let currentItem = {};
-
-    lines.forEach((line) => {
-      if (line.startsWith('#EXTINF')) {
-        const titleMatch = line.match(/,(.*)$/);
-        if (titleMatch) currentItem.title = titleMatch[1];
-
-        const logoMatch = line.match(/tvg-logo="(.*?)"/);
-        if (logoMatch) currentItem.tvgLogo = logoMatch[1];
-      } else if (line.startsWith('#EXTBG')) {
-        const bgMatch = line.match(/#EXTBG: (.*)/);
-        if (bgMatch) currentItem.background = bgMatch[1];
-      } else if (line.startsWith('http') || line.startsWith('/')) {
-        currentItem.url = line.trim();  // Limpa espaços extras
-        items.push(currentItem);
-        currentItem = {};
-      }
-    });
-    return items;
-  };
-
-  // Função para carregar o conteúdo do arquivo M3U
-  const loadM3UFile = (file) => {
-    fetch(file)
-      .then((response) => response.text())
-      .then((text) => {
-        const parsedItems = parseM3U(text);
-        setItems(parsedItems);
-      })
-      .catch((error) => console.error('Erro ao carregar o arquivo M3U:', error));
-  };
-
-  // Carrega o arquivo M3U inicial ao montar o componente
+  // Função para carregar o arquivo M3U ao iniciar
   useEffect(() => {
-    loadM3UFile(currentM3uFile);
-  }, [currentM3uFile]);
+    const loadM3U = async () => {
+      const parsedItems = await fetchM3U(currentUrl);
+      setItems(parsedItems);
+    };
 
-  // Quando o usuário clicar no item, ele tentará carregar o próximo arquivo M3U ou, se for um arquivo final (por exemplo, mp4), ele abrirá o link
-  const handleClick = (itemUrl) => {
-    // Verifica se o link é outro arquivo .m3u
-    if (itemUrl.endsWith('.m3u')) {
-      setCurrentM3uFile(itemUrl); // Atualiza para carregar o novo arquivo M3U
+    loadM3U();
+  }, [currentUrl]);
+
+  // Quando o usuário clica em um item
+  const handleItemClick = (url) => {
+    if (url.endsWith('.mp4')) {
+      // Caso seja um vídeo, abrir direto o MP4
+      window.open(url, '_blank');
     } else {
-      window.open(itemUrl, '_blank'); // Se for um arquivo final, abre o conteúdo
+      // Caso seja outro M3U, atualiza o URL para carregar o novo arquivo
+      const nextUrl = url.startsWith('/') ? `${window.location.origin}${url}`: url;
+      setCurrentUrl(nextUrl);
     }
   };
 
   return (
-    <div style={styles.container}>
+    <div className="container">
       <h1>Playlist de Séries</h1>
-      <div style={styles.grid}>
+      <div className="grid-container">
         {items.map((item, index) => (
-          <div key={index} style={styles.card} onClick={() => handleClick(item.url)}>
+          <div
+            key={index}
+            className="grid-item"
+            style={{ background: item.background || '#11609e' }}
+          >
             {item.tvgLogo && (
-              <img src={item.tvgLogo} alt={item.title} style={styles.logo} />
+              <img
+                src={item.tvgLogo}
+                alt={item.title}
+                className="thumbnail"
+                onClick={() => handleItemClick(item.url)}
+              />
             )}
-            <h2 style={styles.title}>{item.title}</h2>
+            <h2 onClick={() => handleItemClick(item.url)} className="title">{item.title}</h2>
           </div>
         ))}
       </div>
     </div>
   );
-};
-
-// Estilos para o layout responsivo
-const styles = {
-  container: {
-    padding: '20px',
-    fontFamily: 'Arial, sans-serif',
-  },
-  grid: {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-    gap: '20px',
-  },
-  card: {
-    backgroundColor: '#f5f5f5',
-    borderRadius: '8px',
-    padding: '20px',
-    textAlign: 'center',
-    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
-    cursor: 'pointer',
-  },
-  logo: {
-    width: '100%',
-    height: 'auto',
-    borderRadius: '8px',
-  },
-  title: {
-    fontSize: '18px',
-    margin: '10px 0',
-  },
 };
 
 export default App;
