@@ -43,7 +43,7 @@ const parseM3U = (content) => {
 
 const App = () => {
   const [items, setItems] = useState([]);
-  const [currentUrl, setCurrentUrl] = useState('/series.m3u');
+  const [currentUrl, setCurrentUrl] = useState(`${window.location.origin}/series.m3u`);
 
   // Função para carregar o arquivo M3U ao iniciar
   useEffect(() => {
@@ -62,9 +62,8 @@ const App = () => {
       window.open(url, '_blank');
     } else {
       // Caso seja outro M3U, atualiza o URL para carregar o novo arquivo
-      const nextUrl = url.startsWith('/') ;
-      console.log(url);
-      setCurrentUrl(url);
+      const nextUrl = url.startsWith('/') ? `${window.location.origin}${url} `: url;
+      setCurrentUrl(nextUrl);
     }
   };
 
