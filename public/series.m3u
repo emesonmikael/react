@@ -7,7 +7,7 @@
 /NetfliSeries.m3u
 #EXTINF:0 type="playlist" tvg-logo="https://i.imgur.com/WmsgVaM.png",Series | Discovery Plus
 #EXTBG: #11609e
-http://e.fastcdn.fun/ssiptv/580493864/762284416/series/35
+/DiscoveryPlus.m3u
 #EXTINF:0 type="playlist" tvg-logo="https://i.imgur.com/WmsgVaM.png",Series | Globoplay
 #EXTBG: #11609e
 http://e.fastcdn.fun/ssiptv/580493864/762284416/series/25
