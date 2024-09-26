@@ -9,13 +9,13 @@ const LiveStreamPlayer = () => {
     if (videoRef.current) {
       if (Hls.isSupported()) {
         const hls = new Hls();
-        hls.loadSource("http://zlb177.office646851.online/auth/349.ts"); // URL do stream
+        hls.loadSource("http://zlb177.office646851.online/auth/349.m3u8"); // URL do stream
         hls.attachMedia(videoRef.current);
         hls.on(Hls.Events.MANIFEST_PARSED, () => {
           videoRef.current.play();
         });
       } else if (videoRef.current.canPlayType("application/vnd.apple.mpegurl")) {
-        videoRef.current.src = "http://zlb177.office646851.online/auth/349.ts";
+        videoRef.current.src = "http://zlb177.office646851.online/auth/349.m3u8";
         videoRef.current.addEventListener("loadedmetadata", () => {
           videoRef.current.play();
         });
