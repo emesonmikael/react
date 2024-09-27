@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 function App() {
   const [items, setItems] = useState([]);
-  const [currentFile, setCurrentFile] = useState('/src/NetfliSeries.m3u'); // Caminho inicial
+  const [currentFile, setCurrentFile] = useState('/Series.m3u'); // Caminho relativo na pasta public
   const [videoUrl, setVideoUrl] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -11,6 +11,7 @@ function App() {
   const fetchM3U = async (file) => {
     setLoading(true);
     setError(null);
+    console.log(`Fetching M3U from: ${file}`);
     try {
       const response = await fetch(file);
       if (!response.ok) {
@@ -28,6 +29,7 @@ function App() {
 
   // Função para interpretar o conteúdo do arquivo M3U
   const parseM3U = (text) => {
+    console.log("Parsing M3U content");
     const lines = text.split('\n');
     const parsedItems = [];
     let currentItem = {};
@@ -49,6 +51,7 @@ function App() {
       }
     });
 
+    console.log("Parsed items:", parsedItems);
     setItems(parsedItems);
   };
 
@@ -67,30 +70,31 @@ function App() {
   const handleClick = async (item) => {
     setError(null);
     setLoading(true);
+    console.log(`Handling click on item: ${item.title}, link: ${item.link}`);
     try {
-      // Tenta buscar o conteúdo do link
       const response = await fetch(item.link);
       if (!response.ok) {
         throw new Error(`Erro ao acessar o link: ${response.statusText}`);
       }
-      const contentType = response.headers.get('content-type');
-      const text = await response.text();
 
+      const contentType = response.headers.get('content-type');
+      console.log(`Content-Type: ${contentType}`);
+
+      const text = await response.text();
+      
       if (isM3UContent(text)) {
-        // Se o conteúdo é M3U, parseia e atualiza a lista de itens
-        parseM3U(text);
-        setCurrentFile(null); // Já atualizamos os itens, então não há um arquivo atual específico
+        console.log("Link é conteúdo M3U, parseando...");
+        setCurrentFile(item.link);
         setVideoUrl(null);
       } else if (item.link.endsWith('.mp4')) {
-        // Se o link termina com .mp4, reproduz o vídeo
-        setVideoUrl(item.link);
-        setItems([]); // Limpa a lista de itens
-        setCurrentFile(null);
-      } else {
-        // Se não for M3U nem MP4, trata como vídeo
+        console.log("Link é MP4, definindo URL do vídeo...");
         setVideoUrl(item.link);
         setItems([]);
-        setCurrentFile(null);
+      } else {
+        // Tratar como vídeo mesmo que não seja MP4
+        console.log("Assumindo que o link é um vídeo, definindo URL do vídeo...");
+        setVideoUrl(item.link);
+        setItems([]);
       }
     } catch (err) {
       setError(err.message);
@@ -100,10 +104,10 @@ function App() {
     }
   };
 
-  // Função para voltar à lista anterior (se necessário)
+  // Função para voltar à lista anterior
   const handleBack = () => {
     setVideoUrl(null);
-    setCurrentFile('/src/NetfliSeries.m3u'); // Ajuste conforme a lógica de navegação desejada
+    setCurrentFile('/NetfliSeries.m3u'); // Ajuste conforme a lógica de navegação desejada
   };
 
   return (
