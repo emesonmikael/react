@@ -78,7 +78,7 @@ const App = () => {
             style={{ background: item.background || '#11609e' }}
           >
             {item.tvgLogo && (
-              <img
+              <img 
                 src={item.tvgLogo}
                 alt={item.title}
                 className="thumbnail"

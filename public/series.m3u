@@ -16,7 +16,7 @@
 /Series/AppleTVPlus.m3u
 #EXTINF:0 type="playlist" tvg-logo="https://i.imgur.com/WmsgVaM.png",Series | Disney Plus
 #EXTBG: #11609e
-http://e.fastcdn.fun/ssiptv/580493864/762284416/series/28
+/Series/DisneyPlus.m3u
 #EXTINF:0 type="playlist" tvg-logo="https://i.imgur.com/WmsgVaM.png",Series | Star Plus
 #EXTBG: #11609e
 http://e.fastcdn.fun/ssiptv/580493864/762284416/series/32
