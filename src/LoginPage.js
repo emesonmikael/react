@@ -14,7 +14,7 @@ const LoginPage = ({ onLoginSuccess }) => {
   const contractAddress = '0x5f16FE1A416BB62548D37F02D2ceb4305FDD37A3';  // Endereço do contrato
 
   function registrar(){
-    navigate('/Subscriber?ref=0x842249350ec82e6347fee77cb29ece9131dd828b');
+    navigate('/Subscriber?ref=0x725e02d671aa828515e4080e97d0679eb3e867ac');
   }
   // Conectar MetaMask diretamente usando ethers.js
   const connectWallet = async () => {
