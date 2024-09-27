@@ -11,7 +11,7 @@ const LoginPage = ({ onLoginSuccess }) => {
   const [error, setError] = useState('');
   
   const navigate = useNavigate();
-  const contractAddress = '0x2EF17eE49CC5205A2B6f3672dABEbadEDDCcDeD5';  // Endereço do contrato
+  const contractAddress = '0xd77814F2800FCeC938128CdbEBF844bc2cE1AB68';  // Endereço do contrato
 
   function registrar(){
     navigate('/Subscriber?ref=0x842249350ec82e6347fee77cb29ece9131dd828b');
