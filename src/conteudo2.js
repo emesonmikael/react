@@ -41,6 +41,8 @@ import M3UPlayerRomance from './Romance';
 import M3UPlayerSuspense from './Suspense';
 import M3UPlayerDocumentarios from './Documentarios';
 import M3UPlayerReligiosos from './Religiosos';
+import "./App.css";
+
 
 
 function App() {
