@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import ReactPlayer from 'react-player';
 import { saveAs } from 'file-saver';
 import { useNavigate } from 'react-router-dom';
+import './App.css';
+
 
 const M3UPlayerMarvel = () => {
   const [channels, setChannels] = useState([]);
@@ -69,28 +71,30 @@ const M3UPlayerMarvel = () => {
   };
 
   return (
-    <div>
+    <div className="container">
       <h2>M3U Player</h2>
 
       {channels.length > 0 && (
         <>
-          <div>
+          <div className="grid-container">
             <h3>Select a Channel:</h3>
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
+            <div className="grid-container"> 
               {channels.map((channel, index) => (
                 <div
                   key={index}
                   onClick={() => handleChannelSelect(channel)}
-                  style={{
-                    border: '1px solid #ccc',
-                    padding: '10px',
-                    cursor: 'pointer',
-                    textAlign: 'center',
-                    width: '120px',
-                  }}
+                  className="grid-item"
+                  style={{ background: channel.background || '#11609e' }}
+                  //style={{
+                   //border: '1px solid #ccc',
+                  //padding: '10px',
+                   // cursor: 'pointer',
+                   //textAlign: 'center',
+                  // width: '120px',
+                  //}}
                 >
                   {channel.logo && (
-                    <img src={channel.logo} alt={channel.name} style={{ width: '100%' }} />
+                    <img src={channel.logo} alt={channel.name}  className="thumbnail"/> //style={{ width: '100%' }} />
                   )}
                   <p>{channel.name}</p>
                 </div>
