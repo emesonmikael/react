@@ -1,10 +1,7 @@
 #EXTM3U size="Medium"
-#EXTINF:0 type="playlist" tvg-logo="https://i.imgur.com/WmsgVaM.png",VER TUDO
-#EXTBG: #11609e
-/Series/NetfliSeries.m3u
 #EXTINF:0 type="playlist" tvg-logo="https://i.imgur.com/WmsgVaM.png",Series | Netflix
 #EXTBG: #11609e
-/NetfliSeries.m3u
+/Series/NetfliSeries.m3u
 #EXTINF:0 type="playlist" tvg-logo="https://i.imgur.com/WmsgVaM.png",Series | Discovery Plus
 #EXTBG: #11609e
 /Series/DiscoveryPlus.m3u
